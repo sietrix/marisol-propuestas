@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta S · Mapa ilustrado</title>
+<style>
+/* Ilustración vectorial de la ciudad con las dos tiendas como puntos interactivos */
+:root{--sky:#cfe9f7;--g:#6fbf73;--gd:#2f7d46;--road:#fff;--ink:#17323a;--acc:#ff6b4a;--sun:#ffd23f;--mute:#4f6b73}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Trebuchet MS",system-ui,sans-serif;background:#f4fbff;color:var(--ink);line-height:1.55}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 4vw;background:#fffc;backdrop-filter:blur(8px);position:sticky;top:0;z-index:10}
+.logo{font-weight:900;font-size:22px;color:var(--gd)}
+.logo span{color:var(--acc)}
+nav a{color:var(--ink);text-decoration:none;font-weight:700;margin-left:24px;font-size:15px}
+nav a:hover{color:var(--acc)}
+.hero{text-align:center;padding:7vh 5vw 3vh}
+.hero small{font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);font-size:12px}
+.hero h1{font-size:clamp(36px,6vw,80px);line-height:1;letter-spacing:-.04em;font-weight:900;margin:12px auto 14px;max-width:900px}
+.hero p{color:var(--mute);font-size:19px;max-width:520px;margin:auto}
+.mapwrap{max-width:1200px;margin:2vh auto 0;padding:0 3vw;position:relative}
+svg.map{width:100%;height:auto;border-radius:34px;display:block;box-shadow:0 24px 60px #17323a22;background:var(--sky)}
+.pin{cursor:pointer}
+.pin .bub{transition:.25s;transform-box:fill-box;transform-origin:center bottom}
+.pin:hover .bub,.pin.on .bub{transform:scale(1.18) translateY(-4px)}
+.cloud{animation:drift 40s linear infinite}
+.cloud.b{animation-duration:60s;animation-delay:-20s}
+@keyframes drift{from{transform:translateX(-200px)}to{transform:translateX(1300px)}}
+.car{animation:drive 14s linear infinite}
+.car.b{animation-duration:20s;animation-direction:reverse}
+@keyframes drive{from{transform:translateX(-80px)}to{transform:translateX(1280px)}}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1200px;margin:22px auto 0;padding:0 3vw}
+.card{background:#fff;border:3px solid transparent;border-radius:26px;padding:28px 30px;box-shadow:0 10px 30px #17323a14;transition:.3s;cursor:pointer}
+.card.on{border-color:var(--acc);transform:translateY(-4px)}
+.card .st{display:inline-block;font-size:12px;font-weight:800;padding:4px 12px;border-radius:99px;background:#e0f5e6;color:#177a3c}
+.card .st.c{background:#fde6e1;color:#c0392b}
+.card h2{font-size:28px;letter-spacing:-.03em;margin:10px 0 8px}
+.card p{color:var(--mute);margin-top:3px}
+.card a{display:inline-block;margin-top:14px;background:var(--ink);color:#fff;padding:11px 22px;border-radius:99px;text-decoration:none;font-weight:800;font-size:14px}
+section{padding:10vh 4vw}
+.w{max-width:1100px;margin:auto}
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:5vw;align-items:center}
+.about h2,.cg h2{font-size:clamp(30px,4.4vw,56px);letter-spacing:-.04em;line-height:1.02;font-weight:900}
+.about p{color:var(--mute);font-size:18px;margin-top:14px}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.nums div{background:#fff;border-radius:22px;padding:24px;box-shadow:0 8px 24px #17323a10}
+.nums b{font-size:44px;letter-spacing:-.04em;display:block;line-height:1;color:var(--acc)}
+.nums div:nth-child(2) b{color:var(--gd)}.nums div:nth-child(3) b{color:#e0a800}.nums div:nth-child(4) b{color:#3b82c4}
+.nums span{font-size:13px;color:var(--mute)}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:5vw;background:var(--ink);color:#fff;border-radius:36px;padding:7vh 5vw}
+.cg p{opacity:.8;font-size:18px;margin-top:12px}
+form{display:grid;gap:10px}
+input,textarea{padding:15px 18px;border-radius:16px;border:0;font:inherit;outline:0}
+button{padding:16px;border:0;border-radius:99px;background:var(--sun);color:var(--ink);font:900 16px "Trebuchet MS";cursor:pointer}
+footer{text-align:center;padding:26px;font-size:13px;color:var(--mute)}
+@media(max-width:800px){.cards,.about,.cg{grid-template-columns:1fr}nav a{margin-left:12px;font-size:13px}}
+</style>
+<link rel="icon" href="../img/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="../img/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="shortcut icon" href="../favicon.ico?v=2">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=2">
+</head>
+<body>
+<nav><span class="logo">Supermercados <span>Marisol</span></span><div><a href="#tiendas">Tiendas</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a></div></nav>
+<header class="hero"><small>Dos supermercados · una ciudad</small><h1>Siempre hay un Marisol cerca de ti.</h1><p>Pulsa en el mapa y descubre cuál te queda más a mano.</p></header>
+
+<div class="mapwrap" id="tiendas">
+<svg class="map" viewBox="0 0 1200 560" role="img" aria-label="Mapa ilustrado de la ciudad con los dos supermercados">
+<rect width="1200" height="560" fill="#cfe9f7"/>
+<g class="cloud" fill="#fff" opacity=".9"><ellipse cx="120" cy="70" rx="60" ry="22"/><ellipse cx="160" cy="58" rx="42" ry="22"/><ellipse cx="90" cy="62" rx="36" ry="18"/></g>
+<g class="cloud b" fill="#fff" opacity=".8"><ellipse cx="60" cy="130" rx="50" ry="18"/><ellipse cx="96" cy="120" rx="34" ry="18"/></g>
+<circle cx="1090" cy="80" r="42" fill="#ffd23f"/>
+<path d="M0 340 Q200 290 420 330 T820 320 T1200 300 V560 H0Z" fill="#9fd89f"/>
+<rect x="0" y="360" width="1200" height="200" fill="#8fcf8f"/>
+<!-- río -->
+<path d="M0 500 Q300 470 600 505 T1200 490 V560 H0Z" fill="#8ec9ea"/>
+<!-- calles -->
+<rect x="0" y="395" width="1200" height="46" fill="#fff"/><rect x="0" y="415" width="1200" height="4" fill="#e3ecf0" opacity=".9"/>
+<rect x="250" y="340" width="44" height="170" fill="#fff"/><rect x="850" y="340" width="44" height="170" fill="#fff"/>
+<!-- edificios fondo -->
+<g fill="#b9d5e3"><rect x="40" y="250" width="70" height="110"/><rect x="120" y="280" width="60" height="80"/><rect x="540" y="270" width="80" height="90"/><rect x="640" y="240" width="70" height="120"/><rect x="1010" y="260" width="80" height="100"/></g>
+<g fill="#fff" opacity=".7"><rect x="52" y="266" width="12" height="12"/><rect x="76" y="266" width="12" height="12"/><rect x="52" y="292" width="12" height="12"/><rect x="76" y="292" width="12" height="12"/><rect x="654" y="256" width="12" height="12"/><rect x="678" y="256" width="12" height="12"/><rect x="654" y="284" width="12" height="12"/><rect x="678" y="284" width="12" height="12"/></g>
+<!-- árboles -->
+<g><rect x="470" y="318" width="8" height="40" fill="#8a5a2b"/><circle cx="474" cy="308" r="26" fill="#2f9e5a"/><rect x="760" y="322" width="8" height="38" fill="#8a5a2b"/><circle cx="764" cy="312" r="24" fill="#3aac66"/><rect x="1130" y="324" width="8" height="36" fill="#8a5a2b"/><circle cx="1134" cy="314" r="22" fill="#2f9e5a"/></g>
+<!-- tienda 1 -->
+<g><rect x="300" y="262" width="190" height="98" fill="#fff"/><rect x="300" y="262" width="190" height="22" fill="#2f7d46"/>
+<path d="M296 284 h198 l-10 26 h-178z" fill="#ff6b4a"/><path d="M296 284 h33 l-3 26 h-30z M362 284 h33 l-3 26 h-30z M428 284 h33 l-3 26 h-30z" fill="#fff" opacity=".85"/>
+<rect x="320" y="318" width="60" height="42" fill="#bfe3f5"/><rect x="400" y="318" width="70" height="42" fill="#bfe3f5"/><rect x="383" y="324" width="14" height="36" fill="#17323a"/>
+<text x="395" y="278" text-anchor="middle" font-family="Trebuchet MS" font-weight="900" font-size="14" fill="#fff">CENTRO</text></g>
+<!-- tienda 2 -->
+<g><rect x="900" y="248" width="220" height="112" fill="#fff"/><rect x="900" y="248" width="220" height="24" fill="#ff6b4a"/>
+<path d="M896 272 h228 l-10 28 h-208z" fill="#2f7d46"/><path d="M896 272 h38 l-3 28 h-34z M972 272 h38 l-3 28 h-34z M1048 272 h38 l-3 28 h-34z" fill="#fff" opacity=".85"/>
+<rect x="920" y="312" width="70" height="48" fill="#bfe3f5"/><rect x="1020" y="312" width="80" height="48" fill="#bfe3f5"/><rect x="996" y="318" width="16" height="42" fill="#17323a"/>
+<text x="1010" y="266" text-anchor="middle" font-family="Trebuchet MS" font-weight="900" font-size="14" fill="#fff">NORTE</text></g>
+<!-- coches -->
+<g class="car"><rect x="0" y="400" width="52" height="18" rx="8" fill="#ff6b4a"/><rect x="12" y="391" width="26" height="14" rx="5" fill="#ff8a6f"/><circle cx="12" cy="420" r="6" fill="#17323a"/><circle cx="40" cy="420" r="6" fill="#17323a"/></g>
+<g class="car b"><rect x="0" y="424" width="52" height="16" rx="8" fill="#3b82c4"/><rect x="12" y="416" width="26" height="12" rx="5" fill="#6aa5dc"/><circle cx="12" cy="442" r="6" fill="#17323a"/><circle cx="40" cy="442" r="6" fill="#17323a"/></g>
+<!-- pines -->
+<g class="pin on" data-i="0" tabindex="0"><g transform="translate(395 250)"><g class="bub"><path d="M0 0 C-20 -26 -32 -44 -32 -62 a32 32 0 1 1 64 0 C32 -44 20 -26 0 0z" fill="#ff6b4a" stroke="#fff" stroke-width="4"/><circle cx="0" cy="-62" r="15" fill="#fff"/><text x="0" y="-56" text-anchor="middle" font-family="Trebuchet MS" font-weight="900" font-size="18" fill="#ff6b4a">1</text></g></g></g>
+<g class="pin" data-i="1" tabindex="0"><g transform="translate(1010 238)"><g class="bub"><path d="M0 0 C-20 -26 -32 -44 -32 -62 a32 32 0 1 1 64 0 C32 -44 20 -26 0 0z" fill="#2f7d46" stroke="#fff" stroke-width="4"/><circle cx="0" cy="-62" r="15" fill="#fff"/><text x="0" y="-56" text-anchor="middle" font-family="Trebuchet MS" font-weight="900" font-size="18" fill="#2f7d46">2</text></g></g></g>
+</svg>
+</div>
+
+<div class="cards">
+<article class="card on" data-i="0" data-open="8.5-21.5" data-sun="9-15"><span class="st">…</span><h2>1 · Marisol Centro</h2><p>📍 Calle Ejemplo 12, Ciudad</p><p>🕒 Lun–Sáb 8:30–21:30 · Dom 9–15h</p><p>📞 +00 000 000 000</p><a href="#">Cómo llegar</a></article>
+<article class="card" data-i="1" data-open="8-22" data-sun="9-14"><span class="st">…</span><h2>2 · Marisol Norte</h2><p>📍 Avenida Muestra 45, Ciudad</p><p>🕒 Lun–Sáb 8:00–22:00 · Dom 9–14h</p><p>📞 +00 000 000 001</p><a href="#">Cómo llegar</a></article>
+</div>
+
+<section id="nosotros"><div class="w about"><div><h2>Una empresa de barrio que conoce a sus vecinos.</h2><p>Texto de ejemplo: más de cuarenta años cuidando de nuestra ciudad con producto fresco, precios justos y trato cercano.</p></div>
+<div class="nums"><div><b>40+</b><span>años</span></div><div><b>2</b><span>supermercados</span></div><div><b>80</b><span>personas</span></div><div><b>25</b><span>productores locales</span></div></div></div></section>
+
+<section id="contacto" style="padding-top:0"><div class="w cg"><div><h2>Escríbenos</h2><p>Consultas, sugerencias o trabaja con nosotros.</p></div>
+<form onsubmit="return false"><input placeholder="Nombre"><input type="email" placeholder="Email"><textarea rows="3" placeholder="Mensaje"></textarea><button>Enviar mensaje</button></form></div></section>
+<footer>© 2026 Sánchez Irala, S.L. · Supermercados Marisol · Propuesta S · Mapa ilustrado</footer>
+<script>
+const pins=document.querySelectorAll('.pin'),cards=document.querySelectorAll('.card');
+function sel(i){pins.forEach(p=>p.classList.toggle('on',p.dataset.i==i));cards.forEach(c=>c.classList.toggle('on',c.dataset.i==i))}
+pins.forEach(p=>{p.onclick=()=>sel(p.dataset.i);p.onkeydown=e=>e.key==='Enter'&&sel(p.dataset.i)});
+cards.forEach(c=>c.onclick=()=>sel(c.dataset.i));
+cards.forEach(s=>{const n=new Date(),d=n.getDay(),h=n.getHours()+n.getMinutes()/60;
+const r=(d===0?s.dataset.sun:s.dataset.open).split('-').map(Number);const o=h>=r[0]&&h<r[1];const e=s.querySelector('.st');e.textContent=o?'Abierto ahora':'Cerrado ahora';e.classList.toggle('c',!o)});
+</script>
+</body>
+</html>

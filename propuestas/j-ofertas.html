@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta J · Escaparate de ofertas</title>
+<style>
+/* Inspirada en el patrón Lidl/Aldi: ofertas protagonistas, pestañas esta semana / próxima, cuenta atrás */
+:root{--red:#e30613;--blue:#0a3c7d;--yel:#ffd500;--bg:#f4f5f7;--ink:#16202e;--mute:#667085;--line:#e3e6eb}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+.util{background:var(--blue);color:#fff;font-size:13px;padding:8px 4vw;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.util b{color:var(--yel)}
+header{background:#fff;position:sticky;top:0;z-index:5;border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:14px 4vw;max-width:1300px;margin:auto}
+.logo{font-weight:900;font-size:24px;color:var(--blue);letter-spacing:-.03em}
+.logo span{background:var(--yel);padding:0 8px;border-radius:6px;margin-left:4px;color:var(--ink)}
+nav a{color:var(--ink);text-decoration:none;font-weight:700;margin-left:24px;font-size:15px}
+nav a:hover{color:var(--red)}
+.hero{background:var(--yel);padding:7vh 4vw;position:relative;overflow:hidden}
+.hero .in{max-width:1300px;margin:auto;display:grid;grid-template-columns:1.1fr .9fr;gap:4vw;align-items:center}
+.hero h1{font-size:clamp(38px,6vw,84px);line-height:.98;font-weight:900;letter-spacing:-.04em;color:var(--blue)}
+.hero h1 em{font-style:normal;background:var(--red);color:#fff;padding:0 .15em;display:inline-block;transform:rotate(-2deg)}
+.hero p{font-size:19px;margin:18px 0 24px;max-width:480px;font-weight:500}
+.cd{display:flex;gap:10px}
+.cd div{background:var(--blue);color:#fff;border-radius:12px;padding:10px 14px;text-align:center;min-width:68px}
+.cd b{display:block;font-size:30px;line-height:1}
+.cd span{font-size:11px;text-transform:uppercase;opacity:.8}
+.cdl{font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.stage{aspect-ratio:1.1;border-radius:28px;background:linear-gradient(135deg,var(--red),#ff6a3d);display:grid;place-items:center;font-size:clamp(90px,15vw,200px);position:relative;box-shadow:0 20px 50px #0a3c7d33}
+.stage .tag{position:absolute;top:-14px;right:-10px;background:var(--blue);color:#fff;padding:14px 18px;border-radius:50%;font-weight:900;transform:rotate(10deg);text-align:center;line-height:1;font-size:15px}
+.tag b{font-size:30px;display:block}
+section{padding:8vh 4vw}
+.w{max-width:1300px;margin:auto}
+h2{font-size:clamp(28px,3.6vw,44px);letter-spacing:-.03em;font-weight:900;color:var(--blue)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.tabs{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:99px;padding:5px}
+.tabs button{border:0;background:transparent;padding:10px 22px;border-radius:99px;font:700 14px system-ui;cursor:pointer;color:var(--mute)}
+.tabs button.on{background:var(--blue);color:#fff}
+.valid{font-size:14px;color:var(--mute);margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.p{background:#fff;border-radius:18px;border:1px solid var(--line);padding:18px;position:relative;transition:.2s}
+.p:hover{transform:translateY(-4px);box-shadow:0 14px 30px #0a3c7d1a}
+.p .ph{aspect-ratio:1.2;border-radius:12px;display:grid;place-items:center;font-size:64px;margin-bottom:12px}
+.p h3{font-size:16px}
+.p small{color:var(--mute)}
+.pr{display:flex;align-items:baseline;gap:8px;margin-top:8px}
+.pr b{font-size:28px;color:var(--red);letter-spacing:-.03em}
+.pr s{color:var(--mute);font-size:14px}
+.off{position:absolute;top:12px;left:12px;background:var(--red);color:#fff;font-weight:800;font-size:13px;padding:4px 10px;border-radius:99px;z-index:1}
+.stores{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.st{background:#fff;border-radius:20px;padding:30px;border:1px solid var(--line)}
+.st .status{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13px;padding:5px 12px;border-radius:99px;background:#e8f7ee;color:#0a7a3d}
+.st .status.closed{background:#fdecec;color:var(--red)}
+.st .status::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.st h3{font-size:26px;margin:14px 0 10px;letter-spacing:-.02em}
+.st p{color:var(--mute);margin-top:4px}
+.st a{display:inline-block;margin-top:16px;background:var(--blue);color:#fff;padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:700;font-size:14px}
+.about{background:#fff}
+.about .w{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center}
+.about p{color:var(--mute);font-size:18px;margin-top:14px}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.nums div{background:var(--bg);border-radius:16px;padding:22px;text-align:center}
+.nums b{font-size:38px;color:var(--red);display:block;letter-spacing:-.03em}
+.nums span{font-size:13px;color:var(--mute)}
+.contact{background:var(--blue);color:#fff}
+.contact .w{display:grid;grid-template-columns:1fr 1fr;gap:5vw}
+.contact h2{color:#fff}
+.contact p{opacity:.85;margin-top:10px}
+form{display:grid;gap:10px}
+input,textarea,select{padding:14px 16px;border-radius:10px;border:0;font:inherit}
+button.send{padding:15px;border:0;border-radius:10px;background:var(--yel);font:900 16px system-ui;cursor:pointer;color:var(--ink)}
+footer{padding:22px 4vw;font-size:13px;color:var(--mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media(max-width:900px){.hero .in,.stores,.about .w,.contact .w{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}nav a{margin-left:12px;font-size:13px}.stage .tag{right:0}}
+</style>
+<link rel="icon" href="../img/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="../img/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="shortcut icon" href="../favicon.ico?v=2">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=2">
+</head>
+<body>
+<div class="util"><span>📞 Atención al cliente: <b>+00 000 000 000</b></span><span>Ofertas válidas hasta el domingo · Dos supermercados a tu servicio</span></div>
+<header><div class="bar"><span class="logo">Supermercados <span>Marisol</span></span><nav><a href="#ofertas">Ofertas</a><a href="#tiendas">Tiendas</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a></nav></div></header>
+
+<div class="hero"><div class="in">
+<div><div class="cdl">⏱ Las ofertas de la semana acaban en</div>
+<div class="cd" id="cd"><div><b>0</b><span>días</span></div><div><b>0</b><span>horas</span></div><div><b>0</b><span>min</span></div><div><b>0</b><span>seg</span></div></div>
+<h1 style="margin-top:26px">Ahorra en <em>todo</em> lo fresco.</h1>
+<p>Cada semana, ofertas reales en fruta, carne, pescado y despensa en nuestros dos supermercados.</p></div>
+<div class="stage">🛒<div class="tag">hasta<b>-30%</b>en frescos</div></div>
+</div></div>
+
+<section id="ofertas"><div class="w">
+<div class="head"><h2>Ofertas de la semana</h2>
+<div class="tabs"><button class="on" data-t="a">Esta semana</button><button data-t="b">Próxima semana</button></div></div>
+<p class="valid" id="valid"></p>
+<div class="grid" id="grid"></div>
+</div></section>
+
+<section id="tiendas" style="padding-top:2vh"><div class="w"><div class="head"><h2>Encuentra tu supermercado</h2></div>
+<div class="stores">
+<div class="st" data-open="8.5-21.5" data-sun="9-15"><span class="status">…</span><h3>Marisol Centro</h3><p>📍 Calle Ejemplo 12, Ciudad</p><p>🕒 Lun–Sáb 8:30–21:30 · Dom 9–15h</p><p>📞 +00 000 000 000</p><a href="#">Cómo llegar</a></div>
+<div class="st" data-open="8-22" data-sun="9-14"><span class="status">…</span><h3>Marisol Norte</h3><p>📍 Avenida Muestra 45, Ciudad</p><p>🕒 Lun–Sáb 8:00–22:00 · Dom 9–14h</p><p>📞 +00 000 000 001</p><a href="#">Cómo llegar</a></div>
+</div></div></section>
+
+<section id="nosotros" class="about"><div class="w"><div><h2>Una empresa de aquí, para los de aquí</h2><p>Texto de ejemplo: más de 40 años de trayectoria familiar, con un equipo de 80 personas comprometido con el producto fresco y los precios justos.</p></div>
+<div class="nums"><div><b>40+</b><span>años</span></div><div><b>2</b><span>supermercados</span></div><div><b>80</b><span>personas</span></div></div></div></section>
+
+<section id="contacto" class="contact"><div class="w"><div><h2>¿Hablamos?</h2><p>Consultas, sugerencias o trabaja con nosotros.</p></div>
+<form onsubmit="return false"><input placeholder="Nombre"><input type="email" placeholder="Email"><select><option>Consulta general</option><option>Trabaja con nosotros</option><option>Proveedores</option></select><textarea rows="3" placeholder="Mensaje"></textarea><button class="send">Enviar</button></form></div></section>
+<footer><span>© 2026 Sánchez Irala, S.L. · Supermercados Marisol</span><span>Propuesta J · Escaparate de ofertas (productos y precios de ejemplo)</span></footer>
+
+<script>
+const A=[["🍎","Manzana golden","Origen local · kg","1,29","1,89","-32%","#ffe5e0"],["🥩","Filete de ternera","Bandeja · kg","8,95","11,50","-22%","#ffe0e6"],["🐟","Merluza fresca","Pescadería · kg","7,49","9,90","-24%","#e0f0ff"],["🥛","Leche entera","Pack 6 x 1 L","5,40","6,60","-18%","#eef0ff"],["🍞","Pan de payés","Recién hecho · ud.","1,35","1,70","-20%","#fff1d6"],["🧀","Queso curado","Cuña 300 g","3,99","5,20","-23%","#fff6c8"],["🍅","Tomate rama","Huerta · kg","1,79","2,50","-28%","#ffe5e0"],["🫒","Aceite oliva virgen","Botella 1 L","6,95","8,90","-22%","#e9f5dc"]];
+const B=[["🍊","Naranja de zumo","Origen local · kg","0,99","1,50","-34%","#fff1d6"],["🍗","Pollo entero","Granja · kg","2,99","3,90","-23%","#ffe9d6"],["🥦","Brócoli","Huerta · ud.","1,19","1,60","-26%","#e9f5dc"],["🦐","Gamba blanca","Pescadería · kg","11,90","15,50","-23%","#e0f0ff"],["🍝","Pasta integral","Pack 3 x 500 g","2,49","3,30","-25%","#fff6c8"],["🍫","Chocolate negro","Tableta 200 g","1,89","2,45","-23%","#f0e4dc"],["🥚","Huevos camperos","Docena","2,35","2,90","-19%","#fff1d6"],["☕","Café molido","Paquete 250 g","2,79","3,60","-22%","#f0e4dc"]];
+const g=document.getElementById('grid'),v=document.getElementById('valid');
+function show(k){const L=k==='a'?A:B;v.textContent=k==='a'?'Válido del lunes al domingo de esta semana (fechas de ejemplo).':'Disponible a partir del próximo lunes (fechas de ejemplo).';
+g.innerHTML=L.map(p=>`<article class="p"><span class="off">${p[5]}</span><div class="ph" style="background:${p[6]}">${p[0]}</div><h3>${p[1]}</h3><small>${p[2]}</small><div class="pr"><b>${p[3]} €</b><s>${p[4]} €</s></div></article>`).join('')}
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');show(b.dataset.t)});
+show('a');
+// Abierto ahora
+document.querySelectorAll('.st').forEach(s=>{const n=new Date(),d=n.getDay(),h=n.getHours()+n.getMinutes()/60;
+const r=(d===0?s.dataset.sun:s.dataset.open).split('-').map(Number);const o=h>=r[0]&&h<r[1];
+const e=s.querySelector('.status');e.textContent=o?'Abierto ahora':'Cerrado ahora';e.classList.toggle('closed',!o)});
+// Cuenta atrás hasta el próximo domingo 23:59
+function tick(){const n=new Date(),t=new Date(n);t.setDate(n.getDate()+((7-n.getDay())%7));t.setHours(23,59,59,0);let s=Math.max(0,(t-n)/1000|0);
+const v=[s/86400|0,s%86400/3600|0,s%3600/60|0,s%60];document.querySelectorAll('#cd b').forEach((el,i)=>el.textContent=v[i])}
+tick();setInterval(tick,1000);
+</script>
+</body>
+</html>

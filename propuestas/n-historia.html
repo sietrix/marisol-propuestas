@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta N · Nuestra historia</title>
+<style>
+/* Web de storytelling: línea del tiempo con animaciones al hacer scroll */
+:root{--bg:#fff8ec;--ink:#2b1d14;--mute:#7b6a5c;--c1:#e4572e;--c2:#f2a541;--c3:#3f8f5f;--line:#e8d9c0}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:Georgia,"Times New Roman",serif;background:var(--bg);color:var(--ink);line-height:1.65}
+.s{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.prog{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3));width:0;z-index:30}
+nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:16px 5vw;background:#fff8ecee;backdrop-filter:blur(10px);border-bottom:1px solid var(--line);font-family:system-ui,sans-serif}
+.logo{font-family:Georgia,serif;font-weight:700;font-size:23px}
+nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;margin-left:24px}
+nav a:hover{color:var(--c1)}
+.hero{text-align:center;padding:16vh 5vw 12vh;max-width:1000px;margin:auto}
+.hero small{font:700 12px system-ui;letter-spacing:.24em;text-transform:uppercase;color:var(--c1)}
+.hero h1{font-size:clamp(46px,9vw,124px);line-height:.98;letter-spacing:-.03em;margin:20px 0;font-weight:700}
+.hero h1 em{color:var(--c1)}
+.hero p{font-size:21px;color:var(--mute);max-width:560px;margin:auto}
+.scroll{margin-top:40px;font:600 13px system-ui;color:var(--mute);animation:b 2s infinite;display:block}
+@keyframes b{50%{transform:translateY(8px)}}
+.tl{position:relative;max-width:1100px;margin:0 auto;padding:4vh 5vw 10vh}
+.tl::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;background:repeating-linear-gradient(var(--line) 0 10px,transparent 10px 20px);transform:translateX(-50%)}
+.ev{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:12vh;position:relative;opacity:0;transform:translateY(40px);transition:.9s cubic-bezier(.2,.7,.2,1)}
+.ev.in{opacity:1;transform:none}
+.ev::after{content:"";position:absolute;left:50%;top:30px;width:22px;height:22px;border-radius:50%;background:var(--c1);border:5px solid var(--bg);box-shadow:0 0 0 3px var(--c1);transform:translateX(-50%)}
+.ev:nth-child(3n+2)::after{background:var(--c2);box-shadow:0 0 0 3px var(--c2)}
+.ev:nth-child(3n)::after{background:var(--c3);box-shadow:0 0 0 3px var(--c3)}
+.ev .tx{padding-top:6px}
+.ev:nth-child(even) .tx{order:2}
+.yr{font:900 clamp(48px,7vw,92px)/1 system-ui;letter-spacing:-.05em;color:var(--c1)}
+.ev:nth-child(3n+2) .yr{color:var(--c2)}.ev:nth-child(3n) .yr{color:var(--c3)}
+.ev h3{font-size:28px;margin:8px 0}
+.ev p{color:var(--mute);font-size:18px}
+.ev .pic{border-radius:28px;aspect-ratio:4/3;display:grid;place-items:center;font-size:100px;box-shadow:0 20px 40px #2b1d141a}
+.today{background:var(--ink);color:#fff;text-align:center;padding:12vh 5vw}
+.today h2{font-size:clamp(34px,6vw,80px);letter-spacing:-.03em;line-height:1.03;max-width:900px;margin:0 auto 40px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1000px;margin:auto;text-align:left;font-family:system-ui,sans-serif}
+.c{border-radius:26px;padding:34px;transition:.3s}
+.c:hover{transform:translateY(-6px)}
+.c.a{background:var(--c3)}.c.b{background:var(--c1)}
+.c h3{font:700 28px Georgia,serif;margin-bottom:12px}
+.c p{margin-top:5px;opacity:.95}
+.c a{display:inline-block;margin-top:14px;background:#fff;color:var(--ink);padding:11px 22px;border-radius:99px;font-weight:700;text-decoration:none;font-size:14px}
+.contact{padding:11vh 5vw;max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:6vw;font-family:system-ui,sans-serif}
+.contact h2{font:700 clamp(32px,4.4vw,56px)/1.05 Georgia,serif;margin-bottom:12px}
+.contact p{color:var(--mute);font-size:18px}
+form{display:grid;gap:12px}
+input,textarea{padding:16px 18px;border-radius:14px;border:1px solid var(--line);background:#fff;font:inherit;outline:0}
+input:focus,textarea:focus{border-color:var(--c1)}
+button{padding:16px;border:0;border-radius:99px;background:var(--c1);color:#fff;font:800 16px system-ui;cursor:pointer}
+footer{text-align:center;padding:26px;font:13px system-ui;color:var(--mute);border-top:1px solid var(--line)}
+@media(max-width:800px){.tl::before{left:20px}.ev{grid-template-columns:1fr;gap:20px;padding-left:44px}.ev::after{left:20px}.ev:nth-child(even) .tx{order:0}.cards,.contact{grid-template-columns:1fr}}
+</style>
+<link rel="icon" href="../img/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="../img/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="shortcut icon" href="../favicon.ico?v=2">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=2">
+</head>
+<body>
+<div class="prog" id="prog"></div>
+<nav><span class="logo">Supermercados Marisol</span><div><a href="#historia">Historia</a><a href="#hoy">Hoy</a><a href="#contacto">Contacto</a></div></nav>
+
+<header class="hero"><small>Desde 1985</small><h1>Cuarenta años <em>llenando mesas</em>.</h1><p>La historia de una familia, dos supermercados y miles de compras de cada día.</p><span class="scroll">↓ sigue bajando</span></header>
+
+<section class="tl" id="historia">
+<div class="ev"><div class="tx"><div class="yr">1985</div><h3>Abrimos la primera tienda</h3><p>Texto de ejemplo: un local pequeño, una balanza y proveedores de confianza.</p></div><div class="pic" style="background:linear-gradient(135deg,#ffd9b3,#ffb27a)">🏠</div></div>
+<div class="ev"><div class="tx"><div class="yr">1996</div><h3>Crece el equipo</h3><p>Llegan la carnicería, la pescadería y el obrador de pan.</p></div><div class="pic" style="background:linear-gradient(135deg,#ffe9a8,#f2a541)">🥖</div></div>
+<div class="ev"><div class="tx"><div class="yr">2008</div><h3>Nace Marisol Norte</h3><p>Abrimos nuestro segundo supermercado, más grande y con más surtido.</p></div><div class="pic" style="background:linear-gradient(135deg,#c8ebd0,#3f8f5f)">🏬</div></div>
+<div class="ev"><div class="tx"><div class="yr">2026</div><h3>Seguimos de barrio</h3><p>80 personas, 25 productores locales y las mismas ganas del primer día.</p></div><div class="pic" style="background:linear-gradient(135deg,#ffc9b8,#e4572e)">❤️</div></div>
+</section>
+
+<section class="today" id="hoy"><h2>Hoy puedes encontrarnos en dos sitios.</h2>
+<div class="cards">
+<div class="c a"><h3>Centro</h3><p>📍 Calle Ejemplo 12, Ciudad</p><p>🕒 Lun–Sáb 8:30–21:30 · Dom 9–15h</p><p>📞 +00 000 000 000</p><a href="#">Cómo llegar</a></div>
+<div class="c b"><h3>Norte</h3><p>📍 Avenida Muestra 45, Ciudad</p><p>🕒 Lun–Sáb 8:00–22:00 · Dom 9–14h</p><p>📞 +00 000 000 001</p><a href="#">Cómo llegar</a></div>
+</div></section>
+
+<section class="contact" id="contacto"><div><h2>Escríbenos</h2><p>Consultas, sugerencias o trabaja con nosotros.</p></div>
+<form onsubmit="return false"><input placeholder="Nombre"><input type="email" placeholder="Email"><textarea rows="4" placeholder="Mensaje"></textarea><button>Enviar</button></form></section>
+<footer>© 2026 Sánchez Irala, S.L. · Supermercados Marisol · Propuesta N · Nuestra historia (contenido de ejemplo)</footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.25});
+document.querySelectorAll('.ev').forEach(e=>io.observe(e));
+addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'});
+</script>
+</body>
+</html>

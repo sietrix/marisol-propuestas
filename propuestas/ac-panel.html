@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es"><head>
+<meta name="robots" content="noindex"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Propuesta AC · Estilo app</title>
+<style>
+/* La web como una app: barra lateral, tarjetas, "feed" de novedades y estado de tiendas */
+:root{--bg:#f3f5f7;--card:#fff;--ink:#16202a;--mute:#6b7886;--line:#e4e8ec;--g:#16a34a;--gl:#dcfce7;--b:#2563eb}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+aside{background:var(--card);border-right:1px solid var(--line);padding:24px 18px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:6px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;margin-bottom:20px;padding:0 8px}
+.logo i{width:34px;height:34px;background:var(--g);color:#fff;border-radius:10px;display:grid;place-items:center;font-style:normal}
+aside a{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;color:var(--mute);text-decoration:none;font-weight:600;font-size:15px}
+aside a:hover,aside a.on{background:var(--gl);color:#0f7a35}
+aside .sp{flex:1}
+aside .me{background:var(--bg);border-radius:16px;padding:14px;font-size:13px;color:var(--mute)}aside .me b{color:var(--ink);display:block}
+main{padding:28px 3vw 60px;max-width:1200px;width:100%}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;gap:14px;flex-wrap:wrap}
+.top h1{font-size:clamp(26px,3vw,36px);letter-spacing:-.03em}.top p{color:var(--mute)}
+.search{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:10px 20px;color:var(--mute);font-size:14px;min-width:220px}
+.g{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px}
+.hero{grid-column:span 8;background:linear-gradient(120deg,#14532d,#16a34a);color:#fff;border:0;min-height:230px;position:relative;overflow:hidden}
+.hero h2{font-size:clamp(26px,3.4vw,44px);line-height:1.05;letter-spacing:-.03em;max-width:420px}.hero p{margin-top:10px;max-width:380px;opacity:.9}
+.hero .em{position:absolute;right:18px;bottom:-16px;font-size:150px}
+.kpi{grid-column:span 4;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0;background:none;border:0}
+.kpi div{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px}
+.kpi b{font-size:36px;letter-spacing:-.04em;line-height:1;display:block}.kpi span{font-size:12px;color:var(--mute)}
+.sec{grid-column:span 12;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-top:18px}
+.store{grid-column:span 6}
+.store .h{display:flex;justify-content:space-between;align-items:center}.store h3{font-size:22px;letter-spacing:-.02em}
+.pill{font-size:12px;font-weight:700;padding:4px 12px;border-radius:99px;background:var(--gl);color:#0f7a35}.pill.c{background:#fee2e2;color:#b91c1c}
+.row{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-top:1px solid var(--line);font-size:14px}.row:first-of-type{margin-top:14px}.row span:first-child{color:var(--mute)}.row span:last-child{font-weight:600;text-align:right}
+.btn{display:inline-block;margin-top:14px;background:var(--ink);color:#fff;padding:11px 20px;border-radius:12px;text-decoration:none;font-weight:700;font-size:14px}.btn:hover{background:var(--g)}
+.feed{grid-column:span 7}.feed .it{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line)}.feed .it:first-of-type{border:0}
+.feed .ic{width:46px;height:46px;border-radius:14px;background:var(--gl);display:grid;place-items:center;font-size:22px;flex:none}.feed b{display:block}.feed small{color:var(--mute)}
+.form{grid-column:span 5}form{display:grid;gap:10px;margin-top:12px}
+input,textarea{padding:13px 15px;border-radius:12px;border:1px solid var(--line);font:inherit;outline:0;background:var(--bg)}input:focus,textarea:focus{border-color:var(--g);background:#fff}
+button{padding:13px;border:0;border-radius:12px;background:var(--g);color:#fff;font:700 15px system-ui;cursor:pointer}
+footer{margin-top:30px;color:var(--mute);font-size:13px}
+@media(max-width:900px){body{grid-template-columns:1fr}aside{position:static;height:auto;flex-direction:row;overflow:auto;padding:12px;border-right:0;border-bottom:1px solid var(--line)}aside .logo{margin:0 10px 0 0}aside .sp,aside .me{display:none}aside a{white-space:nowrap}.hero,.kpi,.store,.feed,.form{grid-column:span 12}}
+</style><link rel="icon" href="../img/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="../img/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="shortcut icon" href="../favicon.ico?v=2">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=2">
+</head><body>
+<aside><div class="logo"><i>M</i>Supermercados Marisol</div><a class="on" href="#i">🏠 Inicio</a><a href="#t">🏪 Tiendas</a><a href="#nov">📰 Novedades</a><a href="#c">✉️ Contacto</a><div class="sp"></div><div class="me"><b>Atención al cliente</b>+00 000 000 000</div></aside>
+<main>
+<div class="top" id="i"><div><h1>Hola, bienvenido 👋</h1><p>Esto es lo que pasa hoy en Supermercados Marisol.</p></div><div class="search">🔍 Buscar tienda, oferta…</div></div>
+<div class="g">
+<div class="c hero"><h2>Producto fresco, de aquí y de hoy.</h2><p>Dos supermercados con el trato de siempre.</p><span class="em">🧺</span></div>
+<div class="kpi"><div><b>40+</b><span>años de historia</span></div><div><b>2</b><span>supermercados</span></div><div><b>80</b><span>personas</span></div><div><b>25</b><span>productores locales</span></div></div>
+<div class="sec" id="t">Tus tiendas</div>
+<div class="c store" data-open="8.5-21.5" data-sun="9-15"><div class="h"><h3>Marisol Centro</h3><span class="pill">…</span></div><div class="row"><span>Dirección</span><span>Calle Ejemplo 12</span></div><div class="row"><span>Horario</span><span>Lun–Sáb 8:30–21:30 · Dom 9–15h</span></div><div class="row"><span>Teléfono</span><span>+00 000 000 000</span></div><a class="btn" href="#">Cómo llegar</a></div>
+<div class="c store" data-open="8-22" data-sun="9-14"><div class="h"><h3>Marisol Norte</h3><span class="pill">…</span></div><div class="row"><span>Dirección</span><span>Avenida Muestra 45</span></div><div class="row"><span>Horario</span><span>Lun–Sáb 8:00–22:00 · Dom 9–14h</span></div><div class="row"><span>Teléfono</span><span>+00 000 000 001</span></div><a class="btn" href="#">Cómo llegar</a></div>
+<div class="sec" id="nov">Novedades y contacto</div>
+<div class="c feed"><b style="font-size:18px">Novedades</b>
+<div class="it"><div class="ic">🍊</div><div><b>Llegan las naranjas de temporada</b><small>Ejemplo · hace 2 días</small></div></div>
+<div class="it"><div class="ic">🥖</div><div><b>Nuevo horno de pan en Norte</b><small>Ejemplo · hace 1 semana</small></div></div>
+<div class="it"><div class="ic">👥</div><div><b>Buscamos personal para caja</b><small>Ejemplo · hace 2 semanas</small></div></div></div>
+<div class="c form" id="c"><b style="font-size:18px">Escríbenos</b><form onsubmit="return false"><input placeholder="Nombre"><input type="email" placeholder="Email"><textarea rows="3" placeholder="Mensaje"></textarea><button>Enviar</button></form></div>
+</div><footer>© 2026 Sánchez Irala, S.L. · Supermercados Marisol · Propuesta AC · Estilo app</footer></main>
+<script>document.querySelectorAll('[data-open]').forEach(s=>{const n=new Date(),d=n.getDay(),h=n.getHours()+n.getMinutes()/60,r=(d?s.dataset.open:s.dataset.sun).split('-').map(Number),o=h>=r[0]&&h<r[1],e=s.querySelector('.pill');e.textContent=o?'Abierto ahora':'Cerrado ahora';e.classList.toggle('c',!o)});</script>
+</body></html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es"><head>
+<meta name="robots" content="noindex"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Propuesta BA · Mapa y lista</title>
+<style>
+/* Neutros con un único azul verdoso. Pantalla tipo "localizador": lista a la izquierda, plano esquemático a la derecha */
+:root{--bg:#f4f4f1;--card:#fff;--ink:#1d2528;--mute:#6a7478;--line:#dfe1dc;--teal:#0f6b6b;--teal2:#0b5252;--tl:#e1efee}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 4vw;background:var(--card);border-bottom:1px solid var(--line)}
+.logo{font-weight:800;font-size:19px;display:flex;align-items:center;gap:10px}.logo i{width:32px;height:32px;border-radius:8px;background:var(--teal);color:#fff;display:grid;place-items:center;font-style:normal}
+nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;margin-left:24px}nav a:hover{color:var(--teal)}
+.head{padding:7vh 4vw 3vh;max-width:1400px;margin:auto}.head small{color:var(--teal);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:12px}
+.head h1{font-size:clamp(34px,5vw,64px);letter-spacing:-.04em;line-height:1.02;margin:10px 0 10px;max-width:820px}.head p{color:var(--mute);font-size:18px;max-width:560px}
+.loc{max-width:1400px;margin:0 auto;padding:0 4vw 8vh;display:grid;grid-template-columns:400px 1fr;gap:18px;min-height:560px}
+.list{display:flex;flex-direction:column;gap:12px}
+.it{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:20px 22px;cursor:pointer;transition:.2s}.it.on{border-color:var(--teal);box-shadow:0 10px 30px #0f6b6b1c}
+.it .t{display:flex;justify-content:space-between;align-items:center;gap:8px}.it h2{font-size:20px;letter-spacing:-.02em}.it .n{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.st{font-size:12px;font-weight:800;padding:3px 10px;border-radius:99px;background:#dcefdc;color:#2f6b2f;display:inline-block;margin:8px 0}.st.c{background:#f5dcd6;color:#a14c33}
+.it p{color:var(--mute);font-size:14px;margin-top:3px}
+.it .more{display:none;margin-top:12px;gap:8px}.it.on .more{display:flex}.more a{padding:10px 18px;border-radius:99px;font-weight:700;text-decoration:none;font-size:13px}.m1{background:var(--teal);color:#fff}.m2{border:1.5px solid var(--teal);color:var(--teal)}
+.side{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 22px;font-size:14px;color:var(--mute)}.side b{color:var(--ink)}
+.mapbox{background:#e9ebe6;border:1px solid var(--line);border-radius:22px;position:relative;overflow:hidden;min-height:420px}
+.mapbox svg{width:100%;height:100%;display:block;position:absolute;inset:0}
+.pin{cursor:pointer}.pin g{transition:.25s;transform-box:fill-box;transform-origin:center bottom}.pin.on g,.pin:hover g{transform:scale(1.2)}
+.pin .pc{fill:#fff;stroke:var(--teal);stroke-width:4}.pin.on .pc{fill:var(--teal)}.pin text{font-weight:800;font-size:15px;fill:var(--teal);text-anchor:middle}.pin.on text{fill:#fff}
+.band{background:var(--teal2);color:#fff;padding:9vh 4vw}.band .w{max-width:1400px;margin:auto;display:grid;grid-template-columns:1.2fr 1fr;gap:5vw;align-items:center}
+.band h2{font-size:clamp(28px,4vw,50px);letter-spacing:-.035em;line-height:1.05}.band p{color:#bfdcdc;font-size:18px;margin-top:12px}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.nums div{background:#ffffff14;border-radius:16px;padding:20px 10px;text-align:center}.nums b{font-size:38px;display:block}.nums span{font-size:13px;color:#bfdcdc}
+.ct{max-width:1400px;margin:auto;padding:9vh 4vw;display:grid;grid-template-columns:1fr 1fr;gap:5vw}.ct h2{font-size:clamp(28px,4vw,48px);letter-spacing:-.035em;margin-bottom:10px}.ct p{color:var(--mute);font-size:18px}
+form{display:grid;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px}input,select,textarea{padding:14px 16px;border-radius:10px;border:1px solid var(--line);font:inherit;outline:0}input:focus,select:focus,textarea:focus{border-color:var(--teal)}
+button.send{padding:15px;border:0;border-radius:10px;background:var(--teal);color:#fff;font:700 16px system-ui;cursor:pointer}button.send:hover{background:var(--teal2)}
+footer{text-align:center;padding:24px;font-size:12px;color:var(--mute);border-top:1px solid var(--line)}
+@media(max-width:900px){.loc,.band .w,.ct{grid-template-columns:1fr}.mapbox{min-height:340px;order:-1}nav a{margin-left:12px}}
+</style><link rel="icon" href="../img/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="../img/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="shortcut icon" href="../favicon.ico?v=2">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=2">
+</head><body>
+<nav><span class="logo"><i>M</i>Supermercados Marisol</span><div><a href="#tiendas">Tiendas</a><a href="#empresa">Empresa</a><a href="#contacto">Contacto</a></div></nav>
+<header class="head"><small>Localizador de tiendas</small><h1>Encuentra el supermercado Marisol más cercano.</h1><p>Selecciona una tienda en la lista o en el plano para ver su horario y cómo llegar.</p></header>
+<div class="loc" id="tiendas">
+<div class="list">
+<article class="it on" data-i="0" data-open="8.5-21.5" data-sun="9-15"><div class="t"><h2>Marisol Centro</h2><span class="n">1</span></div><span class="st">…</span><p>📍 Calle Ejemplo 12, Ciudad</p><p>🕒 Lun–Sáb 8:30–21:30 · Dom 9–15h</p><p>📞 +00 000 000 000</p><div class="more"><a class="m1" href="#">Cómo llegar</a><a class="m2" href="#">Llamar</a></div></article>
+<article class="it" data-i="1" data-open="8-22" data-sun="9-14"><div class="t"><h2>Marisol Norte</h2><span class="n">2</span></div><span class="st">…</span><p>📍 Avenida Muestra 45, Ciudad</p><p>🕒 Lun–Sáb 8:00–22:00 · Dom 9–14h</p><p>📞 +00 000 000 001</p><div class="more"><a class="m1" href="#">Cómo llegar</a><a class="m2" href="#">Llamar</a></div></article>
+<div class="side"><b>Aparcamiento y accesos</b><br>Texto de ejemplo: ambas tiendas cuentan con acceso adaptado y aparcamiento cercano.</div></div>
+<div class="mapbox"><svg viewBox="0 0 800 560" preserveAspectRatio="xMidYMid slice" aria-label="Plano esquemático de la ciudad">
+<rect width="800" height="560" fill="#e9ebe6"/>
+<g fill="#dfe2dc"><rect x="30" y="30" width="150" height="110"/><rect x="220" y="30" width="170" height="110"/><rect x="430" y="30" width="140" height="110"/><rect x="610" y="30" width="160" height="110"/><rect x="30" y="180" width="150" height="130"/><rect x="430" y="180" width="140" height="130"/><rect x="610" y="180" width="160" height="130"/><rect x="30" y="350" width="150" height="110"/><rect x="220" y="350" width="170" height="110"/><rect x="430" y="350" width="140" height="110"/><rect x="610" y="350" width="160" height="110"/></g>
+<rect x="220" y="180" width="170" height="130" fill="#cfe3cf"/><circle cx="305" cy="245" r="26" fill="#bcd7bc"/>
+<g fill="#fff" stroke="#d3d6cf"><rect x="0" y="152" width="800" height="16"/><rect x="0" y="322" width="800" height="16"/><rect x="0" y="474" width="800" height="14"/><rect x="190" y="0" width="16" height="560"/><rect x="402" y="0" width="16" height="560"/><rect x="582" y="0" width="16" height="560"/></g>
+<path d="M0 520 Q200 490 400 525 T800 505 V560 H0Z" fill="#c9dde0"/>
+<g class="pin on" data-i="0"><g><path d="M300 332 c-12-16-20-26-20-38 a20 20 0 1 1 40 0 c0 12-8 22-20 38z" class="pc"/><text x="300" y="300">1</text></g></g>
+<g class="pin" data-i="1"><g><path d="M690 332 c-12-16-20-26-20-38 a20 20 0 1 1 40 0 c0 12-8 22-20 38z" class="pc"/><text x="690" y="300">2</text></g></g>
+</svg></div></div>
+<section class="band" id="empresa"><div class="w"><div><h2>Una empresa familiar, cuarenta años de servicio.</h2><p>Texto de ejemplo: Sánchez Irala, S.L., con nombre comercial Supermercados Marisol, lleva desde 1985 acercando producto fresco y de proximidad.</p></div><div class="nums"><div><b>40+</b><span>años</span></div><div><b>2</b><span>tiendas</span></div><div><b>80</b><span>personas</span></div></div></div></section>
+<section class="ct" id="contacto"><div><h2>Contacto</h2><p>Consultas, proveedores o candidaturas. Elige “Empleo” para trabajar con nosotros.</p></div><form onsubmit="return false"><input placeholder="Nombre"><input type="email" placeholder="Email"><select><option>Atención al cliente</option><option>Empleo</option><option>Proveedores</option></select><textarea rows="4" placeholder="Mensaje"></textarea><button class="send">Enviar</button></form></section>
+<footer>© 2026 Sánchez Irala, S.L. · Supermercados Marisol · Propuesta BA · Mapa y lista</footer>
+<script>
+const its=document.querySelectorAll('.it'),pins=document.querySelectorAll('.pin');
+function sel(i){its.forEach(x=>x.classList.toggle('on',x.dataset.i==i));pins.forEach(p=>p.classList.toggle('on',p.dataset.i==i))}
+its.forEach(x=>x.onclick=()=>sel(x.dataset.i));pins.forEach(p=>p.onclick=()=>sel(p.dataset.i));
+its.forEach(s=>{const n=new Date(),d=n.getDay(),h=n.getHours()+n.getMinutes()/60,r=(d?s.dataset.open:s.dataset.sun).split('-').map(Number),o=h>=r[0]&&h<r[1],e=s.querySelector('.st');e.textContent=o?'Abierto ahora':'Cerrado ahora';e.classList.toggle('c',!o)});
+</script>
+</body></html>

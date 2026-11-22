@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es"><head>
+<meta name="robots" content="noindex"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Propuesta BB · Compromisos y servicios</title>
+<style>
+/* Azul marino, crema y cobre. Corporativa con compromisos y servicios por tienda */
+:root{--navy:#14284b;--navy2:#1d3866;--cream:#f6f1e6;--cu:#b4693a;--ink:#1a2438;--mute:#667088;--line:#ddd6c6}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 5vw;background:var(--cream);position:sticky;top:0;z-index:5;border-bottom:1px solid var(--line)}
+.logo{font-family:Georgia,serif;font-weight:700;font-size:22px;color:var(--navy)}.logo span{color:var(--cu)}
+nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;margin-left:26px}nav a:hover{color:var(--cu)}nav .cta{background:var(--navy);color:#fff;padding:10px 22px;border-radius:6px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;max-width:1300px;margin:auto;gap:4vw;padding:9vh 5vw;align-items:center}
+.hero small{color:var(--cu);font-weight:800;letter-spacing:.2em;text-transform:uppercase;font-size:12px}
+.hero h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(40px,6vw,86px);line-height:1.02;letter-spacing:-.02em;color:var(--navy);margin:14px 0 18px}.hero p{font-size:19px;color:var(--mute);max-width:480px}
+.btns{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}.btns a{padding:15px 30px;border-radius:6px;font-weight:700;font-size:14px;text-decoration:none}.b1{background:var(--cu);color:#fff}.b1:hover{background:var(--navy)}.b2{border:1.5px solid var(--navy);color:var(--navy)}
+.mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;aspect-ratio:1;max-width:480px;margin:auto;width:100%}
+.mosaic div{border-radius:20px;display:grid;place-items:center;font-size:clamp(50px,8vw,90px);transition:.4s}.mosaic div:hover{transform:scale(1.05) rotate(-2deg)}
+.mosaic div:nth-child(1){background:var(--navy);grid-row:span 2;border-radius:200px 200px 20px 20px}.mosaic div:nth-child(2){background:#e5c9ae}.mosaic div:nth-child(3){background:#c8d2e4}
+section{padding:10vh 5vw}.w{max-width:1300px;margin:auto}
+.eye{color:var(--cu);font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+h2.t{font-family:Georgia,serif;font-weight:400;font-size:clamp(30px,4.4vw,58px);line-height:1.05;margin:10px 0 18px;color:var(--navy)}.lead{color:var(--mute);font-size:18px;max-width:640px}
+.comp{display:grid;grid-template-columns:repeat(4,1fr);margin-top:40px;border-top:1px solid var(--navy)}
+.cm{padding:26px 22px 8px 0;margin-right:22px;border-right:1px solid var(--line)}.cm:last-child{border:0}
+.cm b{font-family:Georgia,serif;font-size:44px;color:var(--cu);font-weight:400;line-height:1;display:block}.cm h3{font-size:18px;margin:8px 0 4px;color:var(--navy)}.cm p{font-size:14px;color:var(--mute)}
+.nv{background:var(--navy);color:#fff}.nv h2.t{color:#fff}.nv .eye{color:#e6b18f}
+.nums{display:flex;gap:clamp(24px,6vw,80px);margin-top:34px;flex-wrap:wrap}.nums b{font-family:Georgia,serif;font-size:62px;font-weight:400;line-height:1;color:#e6b18f;display:block}.nums span{font-size:13px;color:#b9c4dc;text-transform:uppercase;letter-spacing:.14em}
+.stores{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:34px}
+.store{background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden}.store .hd{background:var(--navy2);color:#fff;padding:22px 28px;display:flex;justify-content:space-between;align-items:center;gap:10px}.store .hd h3{font-family:Georgia,serif;font-weight:400;font-size:26px}
+.st{font-size:12px;font-weight:800;padding:4px 12px;border-radius:99px;background:#dcefdc;color:#2f6b2f}.st.c{background:#f6dcd2;color:#a14c33}
+.store .bd{padding:22px 28px 28px}.store .bd p{color:var(--mute);margin-top:4px;font-size:15px}
+.feat{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.feat span{background:#f3ece0;border:1px solid var(--line);border-radius:99px;padding:5px 14px;font-size:13px;font-weight:600;color:var(--navy)}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:5vw}
+form{display:grid;gap:12px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:28px}input,select,textarea{padding:14px 16px;border-radius:6px;border:1px solid var(--line);font:inherit;outline:0}input:focus,select:focus,textarea:focus{border-color:var(--navy)}
+button.send{padding:15px;border:0;border-radius:6px;background:var(--cu);color:#fff;font:700 15px "Segoe UI";cursor:pointer}button.send:hover{background:var(--navy)}
+footer{text-align:center;padding:26px;font-size:12px;color:var(--mute);border-top:1px solid var(--line)}
+@media(max-width:900px){.hero,.stores,.cg{grid-template-columns:1fr}.comp{grid-template-columns:1fr 1fr}.cm{border:0;margin:0}nav a:not(.cta){display:none}}
+</style><link rel="icon" href="../img/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="../img/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="shortcut icon" href="../favicon.ico?v=2">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=2">
+</head><body>
+<nav><span class="logo">Supermercados <span>Marisol</span></span><div><a href="#compromisos">Compromisos</a><a href="#tiendas">Tiendas</a><a class="cta" href="#contacto">Contacto</a></div></nav>
+<header class="hero"><div><small>Empresa familiar · desde 1985</small><h1>Compromiso con lo que ponemos en tu mesa.</h1><p>Dos supermercados que cuidan el producto, a las personas y al entorno.</p><div class="btns"><a class="b1" href="#tiendas">Ver tiendas</a><a class="b2" href="#compromisos">Nuestros compromisos</a></div></div>
+<div class="mosaic"><div>🛒</div><div>🥖</div><div>🥬</div></div></header>
+<section id="compromisos" style="padding-top:2vh"><div class="w"><span class="eye">Nuestros compromisos</span><h2 class="t">Cuatro ideas que guían el trabajo diario.</h2><p class="lead">Texto de ejemplo: una forma de entender el comercio que no ha cambiado en cuarenta años.</p>
+<div class="comp"><div class="cm"><b>01</b><h3>Calidad</h3><p>Selección rigurosa y control de frescura.</p></div><div class="cm"><b>02</b><h3>Cercanía</h3><p>Productores locales y trato directo.</p></div><div class="cm"><b>03</b><h3>Personas</h3><p>Un equipo estable y bien formado.</p></div><div class="cm"><b>04</b><h3>Entorno</h3><p>Menos plástico y menos desperdicio.</p></div></div></div></section>
+<section class="nv"><div class="w"><span class="eye">Cuarenta años en cifras</span><h2 class="t">Una trayectoria que se mide en confianza.</h2><div class="nums"><div><b>40+</b><span>años</span></div><div><b>2</b><span>tiendas</span></div><div><b>80</b><span>personas</span></div><div><b>25</b><span>productores locales</span></div></div></div></section>
+<section id="tiendas"><div class="w"><span class="eye">Tiendas</span><h2 class="t">Servicios en cada tienda.</h2>
+<div class="stores">
+<article class="store" data-open="8.5-21.5" data-sun="9-15"><div class="hd"><h3>Marisol Centro</h3><span class="st">…</span></div><div class="bd"><p>📍 Calle Ejemplo 12, Ciudad</p><p>🕒 Lun–Sáb 8:30–21:30 · Dom 9–15h</p><p>📞 +00 000 000 000</p><div class="feat"><span>Panadería</span><span>Carnicería</span><span>Pescadería</span><span>Pago con tarjeta</span><span>Acceso adaptado</span></div></div></article>
+<article class="store" data-open="8-22" data-sun="9-14"><div class="hd"><h3>Marisol Norte</h3><span class="st">…</span></div><div class="bd"><p>📍 Avenida Muestra 45, Ciudad</p><p>🕒 Lun–Sáb 8:00–22:00 · Dom 9–14h</p><p>📞 +00 000 000 001</p><div class="feat"><span>Panadería</span><span>Carnicería</span><span>Charcutería</span><span>Aparcamiento</span><span>Acceso adaptado</span></div></div></article></div></div></section>
+<section id="contacto" style="padding-top:2vh"><div class="w cg"><div><span class="eye">Contacto</span><h2 class="t">Hablemos.</h2><p class="lead">Consultas, proveedores o candidaturas. Elige “Empleo” para trabajar con nosotros.</p></div><form onsubmit="return false"><input placeholder="Nombre"><input type="email" placeholder="Email"><select><option>Atención al cliente</option><option>Empleo</option><option>Proveedores</option></select><textarea rows="4" placeholder="Mensaje"></textarea><button class="send">Enviar</button></form></div></section>
+<footer>© 2026 Sánchez Irala, S.L. · Supermercados Marisol · Propuesta BB · Compromisos y servicios</footer>
+<script>document.querySelectorAll('.store').forEach(s=>{const n=new Date(),d=n.getDay(),h=n.getHours()+n.getMinutes()/60,r=(d?s.dataset.open:s.dataset.sun).split('-').map(Number),o=h>=r[0]&&h<r[1],e=s.querySelector('.st');e.textContent=o?'Abierto ahora':'Cerrado ahora';e.classList.toggle('c',!o)});</script>
+</body></html>

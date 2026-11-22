@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es"><head>
+<meta name="robots" content="noindex"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Propuesta AR · Corporativa y local</title>
+<style>
+/* Mezcla I + L: tono corporativo azul marino con las tiendas como protagonistas y producto local */
+:root{--navy:#0b2545;--blue:#1d5fd1;--sky:#eaf1fb;--ink:#14213d;--mute:#5b6b85;--line:#dbe3f0;--acc:#f2a900;--bg:#f6f8fb}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.util{background:var(--navy);color:#cfe0ff;font-size:13px;padding:8px 5vw;display:flex;gap:22px;flex-wrap:wrap}.util a{color:#fff;text-decoration:none}
+header{background:#fff;display:flex;justify-content:space-between;align-items:center;padding:16px 5vw;position:sticky;top:0;z-index:5;border-bottom:1px solid var(--line)}
+.logo{font-weight:800;font-size:20px;color:var(--navy);display:flex;align-items:center;gap:10px}.logo i{width:34px;height:34px;border-radius:50% 50% 50% 8px;background:var(--blue);display:grid;place-items:center;color:#fff;font-style:normal}
+nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;margin-left:26px}nav a:hover{color:var(--blue)}nav .cta{background:var(--blue);color:#fff;padding:10px 20px;border-radius:99px}
+.intro{max-width:1250px;margin:auto;padding:9vh 5vw 4vh}.intro small{color:var(--blue);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:12px}
+.intro h1{font-size:clamp(36px,6vw,84px);line-height:1;letter-spacing:-.04em;margin:14px 0 16px;color:var(--navy);max-width:950px}.intro h1 u{text-decoration:none;color:var(--blue)}
+.intro p{font-size:20px;color:var(--mute);max-width:560px}
+.finder{max-width:1250px;margin:0 auto;padding:0 5vw 8vh;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tc{background:#fff;border-radius:26px;overflow:hidden;border:1px solid var(--line);transition:.3s}.tc:hover{box-shadow:0 24px 50px #0b254520;transform:translateY(-6px)}
+.tc .ph{height:210px;position:relative;display:grid;place-items:center;font-size:96px}.tc:nth-child(1) .ph{background:linear-gradient(135deg,#c6d6ea,#6f95c4)}.tc:nth-child(2) .ph{background:linear-gradient(135deg,#f1dfbf,#d9a860)}
+.ob{position:absolute;left:18px;top:18px;background:#fff;color:#1f6b3a;font-weight:800;font-size:13px;padding:6px 14px;border-radius:99px;display:flex;align-items:center;gap:8px}.ob::before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor}.ob.c{color:#a8403a}
+.tc .bd{padding:26px 30px 30px}.tc h2{font-size:28px;letter-spacing:-.03em;color:var(--navy)}
+.rows{margin:12px 0 20px}.rows div{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}.rows span:first-child{width:24px}
+.acts{display:flex;gap:10px;flex-wrap:wrap}.acts a{padding:12px 22px;border-radius:99px;font-weight:700;text-decoration:none;font-size:14px}.a1{background:var(--blue);color:#fff}.a1:hover{background:var(--navy)}.a2{border:1.5px solid var(--navy);color:var(--navy)}
+section{padding:9vh 5vw}.w{max-width:1250px;margin:auto}
+.eye{color:var(--blue);font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+h2.t{font-size:clamp(28px,4vw,50px);letter-spacing:-.03em;line-height:1.06;margin:10px 0 14px;color:var(--navy)}.lead{color:var(--mute);font-size:18px;max-width:620px}
+.vals{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}.val{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;transition:.2s}.val:hover{border-color:var(--blue)}
+.val .ic{width:44px;height:44px;border-radius:12px;background:var(--sky);display:grid;place-items:center;font-size:21px;margin-bottom:10px}.val h3{font-size:17px}.val p{color:var(--mute);font-size:14px}
+.prod{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}.pd{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px}.pd .av{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;font-size:32px;margin-bottom:12px}.pd small{color:var(--blue);font-weight:700}.pd p{color:var(--mute);font-size:14px;margin-top:6px}
+.band{background:linear-gradient(135deg,var(--navy),#14407a);color:#fff}.band .w{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center}.band h2{color:#fff}.band p{color:#cfe0ff;font-size:18px;margin-top:12px}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.nums div{background:#ffffff14;border-radius:20px;padding:22px 12px;text-align:center}.nums b{font-size:40px;display:block;color:var(--acc)}.nums span{font-size:13px;color:#cfe0ff}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:5vw}.job{margin-top:22px;background:#fff;border:1px dashed var(--blue);border-radius:16px;padding:18px 22px}.job b{color:var(--blue)}
+form{display:grid;gap:12px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px}input,select,textarea{padding:14px 16px;border-radius:12px;border:1px solid var(--line);font:inherit;outline:0}input:focus,select:focus,textarea:focus{border-color:var(--blue)}
+button{padding:15px;border:0;border-radius:99px;background:var(--blue);color:#fff;font:700 16px system-ui;cursor:pointer}button:hover{background:var(--navy)}
+footer{background:var(--navy);color:#9db4d8;padding:34px 5vw;font-size:14px}footer .in{max-width:1250px;margin:auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}footer b{color:#fff;display:block;margin-bottom:8px}footer a{color:#9db4d8;display:block;text-decoration:none;margin-bottom:4px}
+footer .cp{max-width:1250px;margin:22px auto 0;border-top:1px solid #ffffff22;padding-top:14px;font-size:12px}
+@media(max-width:900px){.finder,.band .w,.cg,footer .in{grid-template-columns:1fr}.vals,.prod{grid-template-columns:1fr 1fr}nav a:not(.cta){display:none}}@media(max-width:520px){.vals,.prod{grid-template-columns:1fr}}
+</style><link rel="icon" href="../img/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="../img/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="shortcut icon" href="../favicon.ico?v=2">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=2">
+</head><body>
+<div class="util"><span>📞 +00 000 000 000</span><a href="#contacto">Trabaja con nosotros</a><a href="#contacto">Atención al cliente</a></div>
+<header><span class="logo"><i>M</i>Supermercados Marisol</span><nav><a href="#tiendas">Tiendas</a><a href="#local">Producto local</a><a href="#empresa">Empresa</a><a class="cta" href="#contacto">Contacto</a></nav></header>
+<div class="intro"><small>Supermercados de proximidad · desde 1985</small><h1>Tu supermercado de confianza, <u>más cerca</u>.</h1><p>Elige tu tienda: horarios, ubicación y cómo llegar, a un clic.</p></div>
+<div class="finder" id="tiendas">
+<article class="tc" data-open="8.5-21.5" data-sun="9-15"><div class="ph"><span class="ob">…</span>🏪</div><div class="bd"><h2>Marisol Centro</h2><div class="rows"><div><span>📍</span><span>Calle Ejemplo 12, Ciudad</span></div><div><span>🕒</span><span>Lun–Sáb 8:30–21:30 · Dom 9–15h</span></div><div><span>📞</span><span>+00 000 000 000</span></div></div><div class="acts"><a class="a1" href="#">Cómo llegar</a><a class="a2" href="#">Llamar</a></div></div></article>
+<article class="tc" data-open="8-22" data-sun="9-14"><div class="ph"><span class="ob">…</span>🏬</div><div class="bd"><h2>Marisol Norte</h2><div class="rows"><div><span>📍</span><span>Avenida Muestra 45, Ciudad</span></div><div><span>🕒</span><span>Lun–Sáb 8:00–22:00 · Dom 9–14h</span></div><div><span>📞</span><span>+00 000 000 001</span></div></div><div class="acts"><a class="a1" href="#">Cómo llegar</a><a class="a2" href="#">Llamar</a></div></div></article>
+</div>
+<section id="local" style="background:#fff"><div class="w"><span class="eye">Producto local</span><h2 class="t">Con nombre y apellidos.</h2><p class="lead">Texto de ejemplo: trabajamos con productores de la zona. Conoce a algunos de ellos.</p>
+<div class="prod"><div class="pd"><div class="av" style="background:#ffe9d6">🥕</div><h3>Huerta Los Olmos</h3><small>Verduras · a 12 km</small><p>Cultivo de temporada, recogido cada madrugada.</p></div><div class="pd"><div class="av" style="background:#fff3c9">🧀</div><h3>Quesería La Vega</h3><small>Lácteos · a 25 km</small><p>Queso artesano de la comarca.</p></div><div class="pd"><div class="av" style="background:#e0eefc">🐟</div><h3>Pescados del Puerto</h3><small>Pescado · a 40 km</small><p>Captura diaria desde la lonja.</p></div><div class="pd"><div class="av" style="background:#fde2e2">🍯</div><h3>Miel Sierra Alta</h3><small>Despensa · a 30 km</small><p>Miel y conservas familiares.</p></div></div></div></section>
+<section id="empresa"><div class="w"><span class="eye">La empresa</span><h2 class="t">Solidez, cercanía y compromiso.</h2><p class="lead">Texto de ejemplo: Sánchez Irala, S.L., con nombre comercial Supermercados Marisol, es una empresa familiar de distribución alimentaria.</p>
+<div class="vals"><div class="val"><div class="ic">✔️</div><h3>Calidad</h3><p>Selección rigurosa de producto fresco.</p></div><div class="val"><div class="ic">🌱</div><h3>Origen local</h3><p>Apoyo a los productores de la región.</p></div><div class="val"><div class="ic">🤝</div><h3>Servicio</h3><p>Atención profesional y cercana.</p></div><div class="val"><div class="ic">♻️</div><h3>Sostenibilidad</h3><p>Menos residuos y menos plástico.</p></div></div></div></section>
+<section class="band"><div class="w"><div><h2 class="t" style="color:#fff">Cuarenta años de barrio</h2><p>Una empresa familiar que crece sin perder la cercanía. Detrás de cada caja y cada mostrador hay vecinos que te conocen.</p></div><div class="nums"><div><b>40+</b><span>años</span></div><div><b>2</b><span>tiendas</span></div><div><b>80</b><span>personas</span></div></div></div></section>
+<section id="contacto"><div class="w cg"><div><span class="eye">Contacto</span><h2 class="t">Estamos a tu lado.</h2><p class="lead">Atención al cliente, proveedores o candidaturas. Te respondemos en 48 horas.</p><div class="job"><b>Trabaja con nosotros</b><br>Elige “Empleo” como motivo y cuéntanos qué sabes hacer.</div></div>
+<form onsubmit="return false"><input placeholder="Nombre"><input type="email" placeholder="Email"><select><option>Atención al cliente</option><option>Empleo</option><option>Proveedores</option></select><textarea rows="4" placeholder="Mensaje"></textarea><button>Enviar</button></form></div></section>
+<footer><div class="in"><div><b>Supermercados Marisol</b>Dos supermercados, una familia.<br>Calle Ejemplo 12 · Avenida Muestra 45</div><div><b>Información</b><a href="#">Aviso legal</a><a href="#">Privacidad</a><a href="#">Cookies</a></div><div><b>Contacto</b><a href="#">info@supermercadosmarisol.example</a><a href="#">+00 000 000 000</a></div></div><div class="cp">© 2026 Sánchez Irala, S.L. · Supermercados Marisol · Propuesta AR · Corporativa y local (mezcla I + L)</div></footer>
+<script>document.querySelectorAll('.tc').forEach(s=>{const n=new Date(),d=n.getDay(),h=n.getHours()+n.getMinutes()/60,r=(d?s.dataset.open:s.dataset.sun).split('-').map(Number),o=h>=r[0]&&h<r[1],e=s.querySelector('.ob');e.textContent=o?'Abierto ahora':'Cerrado ahora';e.classList.toggle('c',!o)});</script>
+</body></html>

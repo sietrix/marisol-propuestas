@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es"><head>
+<meta name="robots" content="noindex"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Propuesta AZ · Secciones y horarios</title>
+<style>
+/* Azul petróleo y arena. Pestañas de secciones y tabla de horarios semanales con el día de hoy resaltado */
+:root{--pet:#1b4b5a;--pet2:#2a6577;--sand:#efe6d6;--paper:#faf6ee;--coral:#c4694f;--ink:#1d2d33;--mute:#667780;--line:#dcd3c0}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 5vw;border-bottom:1px solid var(--line)}
+.logo{font-family:Georgia,serif;font-size:23px;color:var(--pet);font-weight:700}
+nav a{color:var(--ink);text-decoration:none;font-size:14px;font-weight:600;margin-left:26px}nav a:hover{color:var(--coral)}
+.hero{background:var(--pet);color:#fff;padding:12vh 5vw;position:relative;overflow:hidden}.hero::after{content:"";position:absolute;right:-8vw;top:-10vw;width:40vw;aspect-ratio:1;border-radius:50%;background:var(--pet2);opacity:.6}
+.hero .in{max-width:1200px;margin:auto;position:relative;z-index:1}
+.hero small{letter-spacing:.24em;text-transform:uppercase;font-size:12px;color:#e6cdb4;font-weight:700}
+.hero h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(42px,6.8vw,94px);line-height:1.02;letter-spacing:-.02em;margin:16px 0 18px;max-width:880px}.hero h1 i{color:#e6b18f}
+.hero p{font-size:20px;color:#cfdde2;max-width:520px}
+.btn{display:inline-block;margin-top:28px;padding:15px 34px;background:var(--coral);color:#fff;text-decoration:none;font-weight:700;border-radius:99px;font-size:14px;transition:.2s}.btn:hover{background:#fff;color:var(--pet)}
+section{padding:10vh 5vw}.w{max-width:1200px;margin:auto}
+.eye{color:var(--coral);font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(30px,4.4vw,56px);line-height:1.06;margin:10px 0 18px;color:var(--pet)}.lead{color:var(--mute);font-size:18px;max-width:620px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:30px 0 0}.tabs button{padding:12px 22px;border-radius:99px;border:1.5px solid var(--line);background:#fff;font:700 14px "Segoe UI";color:var(--mute);cursor:pointer;transition:.2s}.tabs button.on{background:var(--pet);color:#fff;border-color:var(--pet)}
+.tp{display:none;grid-template-columns:.8fr 1.2fr;gap:4vw;align-items:center;background:#fff;border:1px solid var(--line);border-radius:26px;padding:34px;margin-top:16px}.tp.on{display:grid}
+.tp .em{aspect-ratio:1;max-width:260px;margin:auto;width:100%;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:110px}
+.tp h3{font-family:Georgia,serif;font-weight:400;font-size:32px;color:var(--pet);margin-bottom:8px}.tp p{color:var(--mute)}.tp ul{margin-top:12px;list-style:none}.tp li{padding:6px 0;border-top:1px solid var(--line);font-size:15px}
+.alt{background:var(--sand)}
+.stores{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:34px}
+.store{background:var(--paper);border-radius:24px;padding:32px;border:1px solid var(--line)}.store .top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.store h3{font-family:Georgia,serif;font-weight:400;font-size:30px;color:var(--pet)}
+.st{font-size:12px;font-weight:800;padding:4px 12px;border-radius:99px;background:#dcebd9;color:#3b6b39}.st.c{background:#f3d9d0;color:#a14c33}
+.addr{color:var(--mute);margin:8px 0 14px;font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:14px}td{padding:8px 4px;border-top:1px solid var(--line)}td:last-child{text-align:right;font-weight:600}tr.today td{background:#f2e3cf;font-weight:800;color:var(--pet)}tr.today td:first-child{padding-left:10px;border-radius:8px 0 0 8px}tr.today td:last-child{padding-right:10px;border-radius:0 8px 8px 0}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:5vw}
+form{display:grid;gap:12px}input,select,textarea{padding:14px 18px;border-radius:12px;border:1px solid var(--line);background:#fff;font:inherit;outline:0}input:focus,select:focus,textarea:focus{border-color:var(--pet)}
+button.send{padding:15px;border:0;border-radius:99px;background:var(--pet);color:#fff;font:700 15px "Segoe UI";cursor:pointer}button.send:hover{background:var(--coral)}
+footer{text-align:center;padding:26px;font-size:12px;color:var(--mute);border-top:1px solid var(--line)}
+@media(max-width:850px){.tp,.stores,.cg{grid-template-columns:1fr}nav a{margin-left:12px}}
+</style><link rel="icon" href="../img/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="../img/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="shortcut icon" href="../favicon.ico?v=2">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=2">
+</head><body>
+<nav><span class="logo">Supermercados Marisol</span><div><a href="#secciones">Secciones</a><a href="#horarios">Tiendas y horarios</a><a href="#contacto">Contacto</a></div></nav>
+<header class="hero"><div class="in"><small>Desde 1985</small><h1>Frescura <i>con oficio</i>, a tu hora.</h1><p>Secciones atendidas por profesionales y horarios amplios en nuestras dos tiendas.</p><a class="btn" href="#horarios">Ver horarios</a></div></header>
+<section id="secciones"><div class="w"><span class="eye">Nuestras secciones</span><h2>Cada producto, con su especialista.</h2><p class="lead">Texto de ejemplo: elige una sección para ver qué te ofrecemos.</p>
+<div class="tabs"><button class="on" data-p="0">Frutería</button><button data-p="1">Carnicería</button><button data-p="2">Pescadería</button><button data-p="3">Panadería</button><button data-p="4">Charcutería</button></div>
+<div class="tp on"><div class="em">🥬</div><div><h3>Frutería y verdura</h3><p>Producto de temporada, seleccionado cada mañana de huertas cercanas.</p><ul><li>Fruta y verdura de proximidad</li><li>Cestas de temporada</li><li>Pedidos especiales bajo encargo</li></ul></div></div>
+<div class="tp"><div class="em">🥩</div><div><h3>Carnicería</h3><p>Cortes a tu gusto y carne de ganaderías de la zona.</p><ul><li>Corte y envasado al momento</li><li>Elaborados caseros</li><li>Encargos para celebraciones</li></ul></div></div>
+<div class="tp"><div class="em">🐟</div><div><h3>Pescadería</h3><p>Pescado y marisco fresco, preparado como lo necesites.</p><ul><li>Limpieza y fileteado</li><li>Producto de lonja</li><li>Consejos de cocinado</li></ul></div></div>
+<div class="tp"><div class="em">🥖</div><div><h3>Panadería</h3><p>Pan recién hecho todos los días y bollería artesana.</p><ul><li>Horneado a lo largo del día</li><li>Panes de masa madre</li><li>Pastelería por encargo</li></ul></div></div>
+<div class="tp"><div class="em">🧀</div><div><h3>Charcutería y quesos</h3><p>Embutidos, quesos y platos preparados.</p><ul><li>Corte a cuchillo</li><li>Quesos de la comarca</li><li>Cátering sencillo</li></ul></div></div></div></section>
+<section id="horarios" class="alt"><div class="w"><span class="eye">Tiendas y horarios</span><h2>Encuentra tu súper.</h2>
+<div class="stores">
+<article class="store" data-hours="8.5-21.5|8.5-21.5|8.5-21.5|8.5-21.5|8.5-21.5|8.5-21.5|9-15"><div class="top"><h3>Marisol Centro</h3><span class="st">…</span></div><p class="addr">📍 Calle Ejemplo 12, Ciudad · 📞 +00 000 000 000</p><table></table></article>
+<article class="store" data-hours="8-22|8-22|8-22|8-22|8-22|8-22|9-14"><div class="top"><h3>Marisol Norte</h3><span class="st">…</span></div><p class="addr">📍 Avenida Muestra 45, Ciudad · 📞 +00 000 000 001</p><table></table></article></div></div></section>
+<section id="contacto"><div class="w cg"><div><span class="eye">Contacto</span><h2>Hablemos.</h2><p class="lead">Consultas, proveedores o candidaturas. Elige “Empleo” para trabajar con nosotros.</p></div><form onsubmit="return false"><input placeholder="Nombre"><input type="email" placeholder="Email"><select><option>Atención al cliente</option><option>Empleo</option><option>Proveedores</option></select><textarea rows="4" placeholder="Mensaje"></textarea><button class="send">Enviar</button></form></div></section>
+<footer>© 2026 Sánchez Irala, S.L. · Supermercados Marisol · Propuesta AZ · Secciones y horarios</footer>
+<script>
+const tb=document.querySelectorAll('.tabs button'),tp=document.querySelectorAll('.tp');
+tb.forEach(b=>b.onclick=()=>{tb.forEach(x=>x.classList.toggle('on',x===b));tp.forEach((p,i)=>p.classList.toggle('on',i==b.dataset.p))});
+const names=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],now=new Date(),d=now.getDay(),h=now.getHours()+now.getMinutes()/60;
+const fmt=x=>{const H=Math.floor(x),M=Math.round((x-H)*60);return H+':'+String(M).padStart(2,'0')};
+document.querySelectorAll('.store').forEach(s=>{const hs=s.dataset.hours.split('|').map(r=>r.split('-').map(Number));// índice 0..6 = lun..dom
+const order=[1,2,3,4,5,6,0];s.querySelector('table').innerHTML=order.map((dd,i)=>`<tr class="${dd===d?'today':''}"><td>${names[dd]}</td><td>${fmt(hs[i][0])} – ${fmt(hs[i][1])}</td></tr>`).join('');
+const r=hs[order.indexOf(d)],o=h>=r[0]&&h<r[1],e=s.querySelector('.st');e.textContent=o?'Abierto ahora':'Cerrado ahora';e.classList.toggle('c',!o)});
+</script>
+</body></html>
