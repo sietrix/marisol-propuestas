@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta BJ · Pide por WhatsApp (inspirada en un restaurante)</title>
+<style>
+:root{--ink:#2b2830;--bg:#f8f4ee;--g:#e8650e;--acc:#f47216;--lime:#8cd139;--mute:#6b6670;--line:#e1ddd0;--card:#fff}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+em{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-weight:400;color:var(--g)}
+.util{background:var(--ink);color:#d9d3cc;font-size:13px;padding:8px 4vw;display:flex;gap:22px;flex-wrap:wrap;justify-content:space-between}
+.util a{color:#fff;text-decoration:none}
+header{background:var(--bg);display:flex;justify-content:space-between;align-items:center;padding:14px 4vw;position:sticky;top:0;z-index:5;border-bottom:1px solid var(--line)}
+.logoimg{height:44px;width:auto;display:block}
+nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;margin-left:26px}
+nav a:hover{color:var(--g)}
+nav .cta{background:var(--acc);color:#fff;padding:10px 20px;border-radius:99px}
+.w{max-width:1300px;margin:auto}
+section{padding:9vh 4vw}
+h1{font-size:clamp(40px,6.6vw,96px);line-height:1;letter-spacing:-.045em}
+h2{font-size:clamp(30px,4vw,54px);letter-spacing:-.035em;line-height:1.05;margin-bottom:12px}
+.kick{color:var(--g);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:12px}
+.lead{color:var(--mute);font-size:19px;max-width:600px}
+.btn{display:inline-block;padding:14px 26px;border-radius:99px;font-weight:700;text-decoration:none;font-size:15px}
+.b1{background:var(--g);color:#fff}.b1:hover{background:var(--ink)}
+.b2{border:1.5px solid var(--ink);color:var(--ink)}.b2:hover{background:var(--ink);color:#fff}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.ob{display:inline-flex;align-items:center;gap:8px;background:#eef6e6;color:#2f7d1f;font-weight:800;font-size:13px;padding:6px 14px;border-radius:99px}
+.ob::before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor}
+.ob.c{color:#c0392b;background:#fbe9e7}
+.rowlink{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:22px;font-weight:700;letter-spacing:-.02em}
+.rowlink span{color:var(--g);transition:.2s}.rowlink:hover span{transform:translateX(8px)}
+.map{background:#e9e4d8;border-radius:22px;height:260px;display:grid;place-items:center;text-align:center;color:var(--mute);border:1px solid var(--line)}
+.map button{margin-top:10px;padding:12px 22px;border:0;border-radius:99px;background:var(--ink);color:#fff;font:700 14px system-ui;cursor:pointer}
+footer{background:var(--ink);color:#b7b0a8;padding:36px 4vw}
+footer .in{max-width:1300px;margin:auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;font-size:14px}
+footer b{color:#fff;display:block;margin-bottom:8px}
+footer a{color:#b7b0a8;display:block;text-decoration:none;margin-bottom:4px}
+footer .cp{max-width:1300px;margin:24px auto 0;border-top:1px solid #ffffff1f;padding-top:16px;font-size:12px}
+.close{background:var(--g);color:#fff;text-align:center;padding:10vh 4vw}
+.close h2{font-size:clamp(34px,5vw,68px)}.close em{color:#fff}
+.close .btn{background:#fff;color:var(--ink)}
+@media(max-width:900px){footer .in{grid-template-columns:1fr}nav a:not(.cta){display:none}}
+.stores{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.stores article{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:30px;transition:.3s}
+.stores article:hover{box-shadow:0 24px 50px #2b28301c;transform:translateY(-5px)}
+.stores h3{font-size:30px;letter-spacing:-.03em;margin:14px 0 8px}
+.stores p{color:var(--mute);line-height:1.9}
+@media(max-width:900px){.stores{grid-template-columns:1fr}}
+.hero{padding:9vh 4vw 5vh}.hero h1{max-width:980px;margin:14px 0 18px}
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+.pasos div{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px}
+.pasos i{font-style:normal;font-weight:800;color:var(--g);font-size:14px}.pasos h3{font-size:22px;margin:6px 0}.pasos p{color:var(--mute);font-size:15px}
+.camp{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.camp a{display:flex;flex-direction:column;justify-content:flex-end;min-height:260px;border-radius:28px;padding:30px;text-decoration:none;color:#fff;position:relative;overflow:hidden}
+.camp a b{font-size:34px;letter-spacing:-.03em;line-height:1.05}.camp a span{margin-top:8px;opacity:.9}
+.camp a::after{content:attr(data-e);position:absolute;right:20px;top:10px;font-size:90px;opacity:.9}
+.reserva{background:var(--ink);color:#fff}.reserva h2{color:#fff}.reserva p{color:#cfc9c2}
+.reserva .w{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center}
+.datos{display:grid;gap:10px}.datos div{background:#ffffff12;border-radius:16px;padding:14px 18px}
+@media(max-width:900px){.pasos,.camp,.reserva .w{grid-template-columns:1fr}}
+.skip{position:absolute;left:-999px;top:0;background:#fff;color:var(--ink);padding:10px 16px;z-index:20}.skip:focus{left:10px}
+.lang{color:#fff;text-decoration:none;border:1px solid #ffffff55;border-radius:99px;padding:2px 10px;font-size:12px;margin-left:8px}
+.ck{position:fixed;left:16px;right:16px;bottom:16px;max-width:620px;background:var(--ink);color:#e9e4dc;border-radius:18px;padding:16px 20px;font-size:13px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;z-index:30;box-shadow:0 10px 40px #0005}
+.ck button{border:0;border-radius:99px;padding:9px 16px;font:700 13px system-ui;cursor:pointer;background:#fff;color:var(--ink)}.ck button.y{background:var(--acc);color:#fff}
+.wa{background:#1f8f4e;color:#fff}.wa:hover{background:var(--ink)}</style>
+<link rel="icon" href="../img/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="../img/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="shortcut icon" href="../favicon.ico?v=2">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=2">
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div class="util"><span>📞 +00 000 000 000 · Calle Ejemplo 12, Ciudad</span><span>Abierto todos los días · <a href="#tiendas">ver horarios</a> <a class="lang" href="#">ES</a><a class="lang" href="#">EN</a></span></div>
+<header><a href="#"><img class="logoimg" src="../img/logo-color.svg" alt="Supermercados Marisol"></a><nav><a href="#hoy">Inicio</a><a href="#packs">Packs</a><a href="#eventos">Actividades</a><a href="#tiendas">Contacto</a><a class="cta" href="#tiendas">Cómo llegar</a></nav></header>
+<main id="main">
+<div class="hero w" id="hoy"><span class="kick">Pedidos y recogida</span><h1>Tu compra, <em>sin colas</em>. Por WhatsApp.</h1><p class="lead">Escríbenos tu lista, la preparamos y la recoges en tienda o te la llevamos a casa.</p>
+<div class="acts"><a class="btn wa" href="#">Pedir por WhatsApp</a><a class="btn b2" href="#packs">Ver packs →</a></div>
+<div class="pasos"><div><i>01</i><h3>Escríbenos</h3><p>Mándanos tu lista o elige un pack.</p></div><div><i>02</i><h3>La preparamos</h3><p>Producto fresco, elegido por nuestro equipo.</p></div><div><i>03</i><h3>Recoge o recibe</h3><p>En tu tienda en 2 h, o a domicilio.</p></div></div></div>
+<section id="packs"><div class="w"><h2>Campañas de <em>temporada</em>.</h2><p class="lead" style="margin-bottom:28px">Pedidos especiales con antelación. Precios de ejemplo.</p>
+<div class="camp"><a href="#" style="background:linear-gradient(135deg,#6b3d2a,#2b2830)" data-e="🎄"><b>Cestas de Navidad</b><span>Desde 42,90 €</span></a><a href="#" style="background:linear-gradient(135deg,#b8602a,#e8650e)" data-e="🧺"><b>Cesta de empresa</b><span>Desde 19,90 € · mínimo 25</span></a></div></div></section>
+<section class="reserva" id="eventos"><div class="w"><div><span class="kick">Haz tu pedido</span><h2>Reserva tu <em style="color:#ffb27a">pedido</em>.</h2><p style="font-size:18px">Llámanos o escríbenos. Te respondemos en el día.</p><div class="acts"><a class="btn wa" href="#">WhatsApp</a><a class="btn" style="background:#fff;color:var(--ink)" href="#">Llamar</a></div></div>
+<div class="datos"><div>📞 +00 000 000 000</div><div>💬 WhatsApp +00 000 000 002</div><div>🕒 Todos los días 8:00 – 22:00</div></div></div></section>
+<section><div class="w"><h2>Elige tu <em>tienda</em>.</h2><p class="lead" style="margin-bottom:28px">Recogida en cualquiera de las dos.</p><div class="stores" id="tiendas">
+<article data-open="8.5-21.5" data-sun="9-15"><span class="ob">…</span><h3>Marisol Centro</h3><p>📍 Calle Ejemplo 12, Ciudad<br>🕒 Lun–Sáb 8:30–21:30 · Dom 9–15 h<br>📞 +00 000 000 000</p><div class="acts"><a class="btn b1" href="#">Cómo llegar</a><a class="btn b2" href="#">Llamar</a></div></article>
+<article data-open="8-22" data-sun="9-14"><span class="ob">…</span><h3>Marisol Norte</h3><p>📍 Avenida Muestra 45, Ciudad<br>🕒 Lun–Sáb 8:00–22:00 · Dom 9–14 h<br>📞 +00 000 000 001</p><div class="acts"><a class="btn b1" href="#">Cómo llegar</a><a class="btn b2" href="#">Llamar</a></div></article>
+</div><div style="margin-top:20px"><div class="map"><div>🗺️ El mapa se carga solo si lo aceptas<br><button>Cargar mapa</button></div></div></div></div></section>
+<div class="close"><h2>Te esperamos <em>en tu barrio</em>.</h2><a class="btn" href="#">Pedir por WhatsApp</a></div></main><div class="ck"><span>Usamos cookies propias y de terceros (mapa). Texto de ejemplo.</span><button>Rechazar</button><button class="y">Aceptar</button></div>
+<footer><div class="in"><div><img src="../img/logo-blanco.svg" alt="Supermercados Marisol" style="height:46px;display:block;margin-bottom:10px">Dos supermercados, una familia.<br>Calle Ejemplo 12 · Avenida Muestra 45</div><div><b>Navegar</b><a href="#">Tiendas</a><a href="#">Secciones</a><a href="#">Trabaja con nosotros</a></div><div><b>Información</b><a href="#">Aviso legal</a><a href="#">Privacidad</a><a href="#">Cookies</a></div></div><div class="cp">© 2026 Sánchez Irala, S.L. · Supermercados Marisol · Propuesta BJ · Pide por WhatsApp (contenido de ejemplo)</div></footer>
+<script>
+document.querySelectorAll('[data-open]').forEach(s=>{const n=new Date(),d=n.getDay(),h=n.getHours()+n.getMinutes()/60;
+const r=(d===0?s.dataset.sun:s.dataset.open).split('-').map(Number);const o=h>=r[0]&&h<r[1];
+const e=s.querySelector('.ob');e.textContent=o?'Abierto ahora':'Cerrado ahora';e.classList.toggle('c',!o)});
+document.querySelectorAll('.map button').forEach(b=>b.onclick=()=>{b.parentNode.innerHTML='🗺️ Aquí se cargaría el mapa (solo tras aceptar cookies)'});
+</script>
+<script>document.querySelector('.ck').querySelectorAll('button').forEach(b=>b.onclick=()=>b.closest('.ck').remove())</script></body>
+</html>
