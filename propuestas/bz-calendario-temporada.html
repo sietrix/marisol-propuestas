@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta BZ · Calendario de temporada (concepto nuevo)</title>
+<style>*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#2b2830;line-height:1.5}body{background:#f6f2e8;color:#2b2830;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+.top{max-width:1200px;margin:auto;padding:6vh 5vw 2vh;text-align:center}.top .k{color:#5a8f1f;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:12px}
+.top h1{font-size:clamp(34px,5.6vw,70px);letter-spacing:-.04em;line-height:1.02;margin:10px 0}.top h1 span{color:#5a8f1f}.top p{color:#6b6670;font-size:19px;max-width:620px;margin:0 auto}
+.main{max-width:1200px;margin:0 auto;padding:2vh 5vw 6vh;display:grid;grid-template-columns:1.05fr 1fr;gap:3vw;align-items:center}
+svg.wh{width:100%;height:auto;display:block;max-width:640px;margin:auto}
+.seg{cursor:pointer;transition:transform .2s,filter .2s;transform-origin:300px 300px}.seg:hover{filter:brightness(1.08)}
+.seg path{stroke:#f6f2e8;stroke-width:3}.seg.on{transform:scale(1.04)}.seg.on path{stroke:#2b2830;stroke-width:4}
+.seg.hit path{stroke:#e8650e;stroke-width:5}.seg.mute{opacity:.35}
+.seg text{pointer-events:none;font-weight:800;fill:#fff;font-size:17px;text-anchor:middle}
+.seg .em{font-size:26px}
+.now{fill:#2b2830}
+.panel{background:#fff;border-radius:30px;padding:30px;border:1px solid #e3ddcf}
+.panel small{color:#5a8f1f;font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+.panel h2{font-size:clamp(32px,4vw,52px);letter-spacing:-.04em;line-height:1;margin:6px 0 4px}
+.panel p{color:#6b6670}
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
+.pr{background:#f6f2e8;border-radius:18px;padding:14px 8px;text-align:center;font-weight:700;font-size:14px}.pr i{display:block;font-style:normal;font-size:38px;line-height:1.1}
+.pr.hl{background:#fdeede;outline:2px solid #e8650e}
+.find{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:6px;font-size:14px;font-weight:700}
+.find select{padding:11px 14px;border-radius:12px;border:2px solid #e3ddcf;font:inherit;background:#fff}
+.nav{display:flex;gap:8px;margin-top:16px}.nav button{width:44px;height:44px;border-radius:50%;border:2px solid #2b2830;background:#fff;font:800 18px system-ui;cursor:pointer;color:#2b2830;padding:0}.nav button:hover{background:#2b2830;color:#fff}
+.leg{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:10px;font-size:12px;color:#6b6670;font-weight:700}.leg i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+section.s{max-width:1200px;margin:0 auto;padding:2vh 5vw 6vh}section.s h2{font-size:clamp(28px,3.6vw,46px);letter-spacing:-.03em;margin-bottom:6px}section.s .l{color:#6b6670;margin-bottom:22px}
+.prod{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.prod div{background:#fff;border:1px solid #e3ddcf;border-radius:22px;padding:20px}.prod i{font-style:normal;font-size:34px}.prod b{display:block;margin-top:6px}.prod small{color:#5a8f1f;font-weight:700}.prod p{color:#6b6670;font-size:14px;margin-top:4px}
+@media(max-width:900px){.main{grid-template-columns:1fr}.prod{grid-template-columns:1fr 1fr}}
+.hd{display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;position:sticky;top:0;z-index:5;background:#fffffff2;border-bottom:1px solid #e6dfd0}.hd img{height:42px;display:block}.hd a{color:#2b2830;text-decoration:none;font-weight:700;font-size:14px}.hd nav a{margin-left:22px}.hd nav a:hover{color:#e8650e}
+.ft{background:#2b2830;color:#b7b0a8;padding:24px 5vw;font-size:13px;display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;align-items:center}.ft img{height:36px}
+.btn{display:inline-block;background:#e8650e;color:#fff;text-decoration:none;font-weight:800;padding:12px 22px;border-radius:99px;font-size:14px;border:0;cursor:pointer;font-family:inherit}.btn.o{background:none;color:#2b2830;border:2px solid #2b2830}.btn:hover{filter:brightness(.92)}
+@media(max-width:800px){.hd nav a:not(.keep){display:none}}.stg{display:grid;grid-template-columns:1fr 1fr;gap:16px}.stg article{background:#fff;border:1px solid #e6dfd0;border-radius:22px;padding:24px}.stg h3{font-size:26px;letter-spacing:-.03em;margin:10px 0 6px}.stg p{color:#6b6670;line-height:1.8;margin-bottom:12px;font-size:15px}@media(max-width:800px){.stg{grid-template-columns:1fr}}.strip{max-width:1200px;margin:0 auto;padding:4vh 5vw 8vh;display:grid;grid-template-columns:1fr auto 1fr auto;gap:18px 22px;align-items:center}.strip div b{display:block;font-size:18px}.strip div span{color:#6b6670;font-size:14px}@media(max-width:900px){.strip{grid-template-columns:1fr}}.ob{display:inline-flex;align-items:center;gap:7px;background:#eef6e6;color:#2f7d1f;font-weight:800;font-size:12px;padding:4px 12px;border-radius:99px}.ob::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}.ob.c{color:#c0392b;background:#fbe9e7}</style>
+<link rel="icon" href="../img/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="../img/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="shortcut icon" href="../favicon.ico?v=2">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=2">
+</head>
+<body>
+
+<header class="hd"><a href="#"><img src="../img/logo-color.svg" alt="Supermercados Marisol"></a><nav><a href="#rueda">Calendario</a><a href="#locales">Productores</a><a class="keep" href="#tiendas">Tiendas</a></nav></header>
+<div class="top"><div class="k">De la huerta a tu mesa</div><h1>Cada mes tiene su <span>sabor</span>.</h1><p>Gira la rueda del año y descubre qué está en su mejor momento. Producto de temporada, más fresco y más barato.</p></div>
+<div class="main" id="rueda"><div><svg class="wh" id="wh" viewBox="0 0 600 600" role="img" aria-label="Rueda de productos de temporada por mes"></svg>
+<div class="leg"><span><i style="background:#6f8fae"></i>Invierno</span><span><i style="background:#6fa04b"></i>Primavera</span><span><i style="background:#d99a2b"></i>Verano</span><span><i style="background:#a9683a"></i>Otoño</span></div></div>
+<aside class="panel"><small id="pk"></small><h2 id="pm"></h2><p id="pc"></p><div class="pg" id="pp"></div>
+<div class="find"><label for="fs">¿Cuándo está en temporada…?</label><select id="fs"></select></div><div class="nav"><button id="pv" aria-label="Mes anterior">‹</button><button id="nx" aria-label="Mes siguiente">›</button></div></aside></div>
+<section class="s" id="locales"><h2>Productores de aquí</h2><p class="l">Parte de lo que ves en la rueda llega de manos que conocemos.</p><div class="prod">
+<div><i>🥕</i><b>Huerta Los Olmos</b><small>Verduras · a 12 km</small><p>Cultivo de temporada, recogido cada madrugada.</p></div><div><i>🧀</i><b>Quesería La Vega</b><small>Lácteos · a 25 km</small><p>Queso artesano de leche de la comarca.</p></div><div><i>🐟</i><b>Pescados del Puerto</b><small>Pescado · a 40 km</small><p>Captura diaria directa desde la lonja.</p></div><div><i>🍯</i><b>Miel Sierra Alta</b><small>Despensa · a 30 km</small><p>Miel y conservas de producción familiar.</p></div></div></section>
+<section class="s" style="padding-top:0"><h2>Pásate por tu tienda</h2><p class="l">Los frescos de temporada, cada día en frutería.</p><div class="stg" id="tiendas"><article data-open="8.5-21.5" data-sun="9-15"><span class="ob">…</span><h3>Marisol Centro</h3><p>📍 Calle Ejemplo 12, Ciudad<br>🕒 Lun–Sáb 8:30–21:30 · Dom 9–15 h<br>📞 +00 000 000 000</p><a class="btn" href="#">Cómo llegar</a></article><article data-open="8-22" data-sun="9-14"><span class="ob">…</span><h3>Marisol Norte</h3><p>📍 Avenida Muestra 45, Ciudad<br>🕒 Lun–Sáb 8:00–22:00 · Dom 9–14 h<br>📞 +00 000 000 001</p><a class="btn" href="#">Cómo llegar</a></article></div></section>
+<section class="strip"><div><b>Trabaja con nosotros</b><span>Dos tiendas y más de 80 personas. Cuéntanos qué sabes hacer.</span></div><a class="btn" href="#">Enviar candidatura</a><div><b>Atención al cliente</b><span>info@supermercadosmarisol.example · +00 000 000 000</span></div><a class="btn o" href="#">Escribirnos</a></section>
+<footer class="ft"><img src="../img/logo-blanco.svg" alt="Supermercados Marisol"><span>© 2026 Sánchez Irala, S.L. · Supermercados Marisol · Propuesta BZ · Calendario de temporada (contenido de ejemplo)</span></footer>
+<script>
+document.querySelectorAll('[data-open]').forEach(el=>{const n=new Date(),d=n.getDay(),h=n.getHours()+n.getMinutes()/60,r=(d===0?el.dataset.sun:el.dataset.open).split('-').map(Number),o=h>=r[0]&&h<r[1],e=el.querySelector('.ob');e.textContent=o?'Abierto ahora':'Cerrado ahora';e.classList.toggle('c',!o)});
+const $=id=>document.getElementById(id);
+const MN=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+const P={'Naranja':'🍊','Mandarina':'🍊','Coliflor':'🥦','Puerro':'🧅','Alcachofa':'🌿','Acelga':'🥬','Brócoli':'🥦','Espinaca':'🥬','Limón':'🍋','Kiwi':'🥝','Espárrago':'🌱','Fresa':'🍓','Guisante':'🫛','Haba':'🫛','Lechuga':'🥬','Rábano':'🌱','Zanahoria':'🥕','Cereza':'🍒','Albaricoque':'🍑','Judía verde':'🫛','Calabacín':'🥒','Melocotón':'🍑','Tomate':'🍅','Pepino':'🥒','Pimiento':'🫑','Sandía':'🍉','Melón':'🍈','Berenjena':'🍆','Uva':'🍇','Higo':'🫐','Manzana':'🍎','Pera':'🍐','Calabaza':'🎃','Granada':'🍎','Seta':'🍄','Castaña':'🌰','Caqui':'🍅','Col':'🥬'};
+const M=[['Naranja','Coliflor','Puerro','Alcachofa','Mandarina','Acelga'],['Naranja','Alcachofa','Brócoli','Espinaca','Limón','Kiwi'],['Espárrago','Fresa','Guisante','Haba','Lechuga','Alcachofa'],['Fresa','Guisante','Haba','Espárrago','Rábano','Zanahoria'],['Cereza','Fresa','Albaricoque','Guisante','Judía verde','Calabacín'],['Cereza','Albaricoque','Melocotón','Tomate','Pepino','Pimiento'],['Sandía','Melón','Melocotón','Tomate','Pimiento','Berenjena'],['Sandía','Melón','Uva','Higo','Tomate','Pimiento'],['Uva','Higo','Manzana','Pera','Berenjena','Calabaza'],['Manzana','Pera','Granada','Calabaza','Seta','Castaña'],['Granada','Caqui','Calabaza','Seta','Castaña','Mandarina'],['Mandarina','Naranja','Coliflor','Col','Puerro','Acelga']];
+const COL=['#6f8fae','#6f8fae','#6fa04b','#6fa04b','#6fa04b','#d99a2b','#d99a2b','#d99a2b','#a9683a','#a9683a','#a9683a','#6f8fae'];
+const NOW=new Date().getMonth();let sel=NOW,fp='';
+const pt=(a,r)=>[300+r*Math.cos(a),300+r*Math.sin(a)];
+function arc(i){const a0=(i*30-105)*Math.PI/180,a1=(i*30-75)*Math.PI/180,R=285,r=150,p=[pt(a0,R),pt(a1,R),pt(a1,r),pt(a0,r)];
+return 'M'+p[0]+' A'+R+' '+R+' 0 0 1 '+p[1]+' L'+p[2]+' A'+r+' '+r+' 0 0 0 '+p[3]+' Z'}
+function wheel(){let h='';
+for(let i=0;i<12;i++){const a=(i*30-90)*Math.PI/180,t=pt(a,250),e=pt(a,205),hit=fp&&M[i].includes(fp);
+h+='<g class="seg'+(i===sel?' on':'')+(hit?' hit':'')+(fp&&!hit?' mute':'')+'" data-i="'+i+'" tabindex="0" role="button" aria-label="'+MN[i]+'"><path d="'+arc(i)+'" fill="'+COL[i]+'"/><text x="'+t[0]+'" y="'+(t[1]+6)+'">'+MN[i].slice(0,3)+'</text><text class="em" x="'+e[0]+'" y="'+(e[1]+9)+'">'+P[M[i][0]]+'</text></g>'}
+const a=(NOW*30-90)*Math.PI/180,m=pt(a,296);h+='<polygon class="now" points="'+m[0]+','+m[1]+' '+(m[0]+Math.cos(a+1.57)*9-Math.cos(a)*18)+','+(m[1]+Math.sin(a+1.57)*9-Math.sin(a)*18)+' '+(m[0]+Math.cos(a-1.57)*9-Math.cos(a)*18)+','+(m[1]+Math.sin(a-1.57)*9-Math.sin(a)*18)+'"/>';
+h+='<circle cx="300" cy="300" r="136" fill="#fff" stroke="#e3ddcf" stroke-width="3"/><text x="300" y="292" text-anchor="middle" font-family="system-ui" font-weight="800" font-size="13" fill="#5a8f1f" letter-spacing="2">EN TEMPORADA</text><text x="300" y="338" text-anchor="middle" font-family="system-ui" font-weight="900" font-size="38" fill="#2b2830">'+MN[sel]+'</text><text x="300" y="366" text-anchor="middle" font-family="system-ui" font-size="14" fill="#6b6670">'+(sel===NOW?'este mes':'pulsa otro mes')+'</text>';
+$('wh').innerHTML=h;
+document.querySelectorAll('.seg').forEach(g=>{g.onclick=()=>{sel=+g.dataset.i;draw()};g.onkeydown=e=>{if(e.key==='Enter')g.onclick()}})}
+function panel(){$('pk').textContent=sel===NOW?'Este mes':'Mes elegido';$('pm').textContent=MN[sel];$('pc').textContent='Estos productos están ahora en su mejor momento.';
+$('pp').innerHTML=M[sel].map(n=>'<div class="pr'+(n===fp?' hl':'')+'"><i>'+P[n]+'</i>'+n+'</div>').join('')}
+function draw(){wheel();panel()}
+const all=[...new Set(M.flat())].sort((a,b)=>a.localeCompare(b,'es'));
+$('fs').innerHTML='<option value="">Elige un producto…</option>'+all.map(n=>'<option>'+n+'</option>').join('');
+$('fs').onchange=e=>{fp=e.target.value;if(fp){const ms=M.map((x,i)=>x.includes(fp)?MN[i].toLowerCase():null).filter(Boolean);$('pc').textContent=fp+': en temporada en '+ms.join(', ')+'.'}draw();if(fp)$('pc').textContent=fp+': en temporada en '+M.map((x,i)=>x.includes(fp)?MN[i].toLowerCase():null).filter(Boolean).join(', ')+'.'};
+$('pv').onclick=()=>{sel=(sel+11)%12;draw()};$('nx').onclick=()=>{sel=(sel+1)%12;draw()};
+document.addEventListener('keydown',e=>{if(e.target.tagName==='SELECT')return;if(e.key==='ArrowRight'){sel=(sel+1)%12;draw()}if(e.key==='ArrowLeft'){sel=(sel+11)%12;draw()}});
+draw();
+</script>
+</body>
+</html>

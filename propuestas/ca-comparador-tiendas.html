@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta CA · Comparador de tiendas (concepto nuevo)</title>
+<style>*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#2b2830;line-height:1.5}body{background:#f4f1ea;color:#2b2830;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+.top{max-width:1200px;margin:auto;padding:6vh 5vw 2vh}.top .k{color:#e8650e;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:12px}
+.top h1{font-size:clamp(34px,5.6vw,70px);letter-spacing:-.04em;line-height:1.02;margin:10px 0}.top h1 .a{color:#e8650e}.top h1 .b{color:#5a8f1f}.top p{color:#6b6670;font-size:19px;max-width:620px}
+.need{max-width:1200px;margin:0 auto;padding:0 5vw 2vh}.need h2{font-size:18px;margin-bottom:10px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}.chips label{cursor:pointer}.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;padding:10px 18px;border-radius:99px;border:2px solid #d9d2c2;background:#fff;font-weight:700;font-size:14px}.chips input:checked+span{background:#2b2830;color:#fff;border-color:#2b2830}.chips input:focus-visible+span{outline:3px solid #e8650e}
+.rec{margin-top:16px;border-radius:20px;padding:18px 22px;background:#fff;border:2px dashed #d9d2c2;font-weight:700}.rec.ok{border:2px solid #2b2830}.rec small{display:block;color:#6b6670;font-weight:500;margin-top:2px}
+.vs{max-width:1200px;margin:0 auto;padding:2vh 5vw 4vh;display:grid;grid-template-columns:1fr 1fr;gap:18px;position:relative}
+.vs::after{content:"VS";position:absolute;left:50%;top:70px;transform:translateX(-50%);background:#2b2830;color:#fff;font-weight:900;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;border:4px solid #f4f1ea;z-index:2}
+.col{background:#fff;border-radius:28px;padding:28px;border:3px solid transparent;transition:.25s}
+.col.c{--c:#e8650e}.col.n{--c:#5a8f1f}.col{border-top:10px solid var(--c)}
+.col.best{border-color:var(--c);box-shadow:0 20px 50px #2b28301c;transform:translateY(-4px)}
+.col .badge{display:none;background:var(--c);color:#fff;font-weight:800;font-size:12px;padding:4px 12px;border-radius:99px;margin-bottom:8px}.col.best .badge{display:inline-block}
+.col h2{font-size:30px;letter-spacing:-.03em}.col .ad{color:#6b6670;margin:4px 0 16px}
+.col h3{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:#6b6670;margin:20px 0 10px}
+.day{display:grid;grid-template-columns:38px 1fr 92px;gap:10px;align-items:center;font-size:13px;padding:3px 0}.day.today{font-weight:800}
+.bar{position:relative;height:16px;background:#efeae0;border-radius:99px}.bar i{position:absolute;top:0;bottom:0;background:var(--c);border-radius:99px;opacity:.85}.day.today .bar i{opacity:1}
+.bar b{position:absolute;top:-4px;bottom:-4px;width:3px;background:#2b2830;border-radius:2px}
+.day span:last-child{color:#6b6670;text-align:right;font-weight:600}
+.axis{display:grid;grid-template-columns:38px 1fr 92px;gap:10px;font-size:11px;color:#8a8590}.axis div{display:flex;justify-content:space-between}
+.svc{list-style:none;padding:0;margin:0}.svc li{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #eee8db;font-size:15px}.svc li.m{background:#fdf6e9;margin:0 -10px;padding:10px;border-radius:10px;border-bottom:0}
+.y{color:#2f7d1f;font-weight:800}.no{color:#b3adb8;font-weight:800}
+.hd{display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;position:sticky;top:0;z-index:5;background:#fffffff2;border-bottom:1px solid #e6dfd0}.hd img{height:42px;display:block}.hd a{color:#2b2830;text-decoration:none;font-weight:700;font-size:14px}.hd nav a{margin-left:22px}.hd nav a:hover{color:#e8650e}
+.ft{background:#2b2830;color:#b7b0a8;padding:24px 5vw;font-size:13px;display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;align-items:center}.ft img{height:36px}
+.btn{display:inline-block;background:#e8650e;color:#fff;text-decoration:none;font-weight:800;padding:12px 22px;border-radius:99px;font-size:14px;border:0;cursor:pointer;font-family:inherit}.btn.o{background:none;color:#2b2830;border:2px solid #2b2830}.btn:hover{filter:brightness(.92)}
+@media(max-width:800px){.hd nav a:not(.keep){display:none}}.ob{display:inline-flex;align-items:center;gap:7px;background:#eef6e6;color:#2f7d1f;font-weight:800;font-size:12px;padding:4px 12px;border-radius:99px}.ob::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}.ob.c{color:#c0392b;background:#fbe9e7}.strip{max-width:1200px;margin:0 auto;padding:4vh 5vw 8vh;display:grid;grid-template-columns:1fr auto 1fr auto;gap:18px 22px;align-items:center}.strip div b{display:block;font-size:18px}.strip div span{color:#6b6670;font-size:14px}@media(max-width:900px){.strip{grid-template-columns:1fr}}
+@media(max-width:800px){.vs{grid-template-columns:1fr}.vs::after{display:none}}</style>
+<link rel="icon" href="../img/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="../img/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="shortcut icon" href="../favicon.ico?v=2">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=2">
+</head>
+<body>
+
+<header class="hd"><a href="#"><img src="../img/logo-color.svg" alt="Supermercados Marisol"></a><nav><a href="#vs">Comparar</a><a class="keep" href="#contacto">Contacto</a></nav></header>
+<div class="top"><div class="k">Dos tiendas, una familia</div><h1><span class="a">Centro</span> o <span class="b">Norte</span>: elige la tuya.</h1><p>Compara horarios y servicios lado a lado. Dinos qué necesitas y te decimos cuál te conviene.</p></div>
+<div class="need"><h2>¿Qué necesitas?</h2><div class="chips" id="ch"></div><div class="rec" id="rc">Marca lo que te importa y te recomendamos una tienda.</div></div>
+<div class="vs" id="vs"><article class="col c" id="c0"></article><article class="col n" id="c1"></article></div>
+<section class="strip" id="contacto"><div><b>Trabaja con nosotros</b><span>Dos tiendas y más de 80 personas. Cuéntanos qué sabes hacer.</span></div><a class="btn" href="#">Enviar candidatura</a><div><b>Atención al cliente</b><span>info@supermercadosmarisol.example · +00 000 000 000</span></div><a class="btn o" href="#">Escribirnos</a></section>
+<footer class="ft"><img src="../img/logo-blanco.svg" alt="Supermercados Marisol"><span>© 2026 Sánchez Irala, S.L. · Supermercados Marisol · Propuesta CA · Comparador de tiendas (contenido de ejemplo)</span></footer>
+<script>
+const $=id=>document.getElementById(id);
+const D=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+const S=[{n:'Marisol Centro',e:'🏪',a:'📍 Calle Ejemplo 12, Ciudad',w:[8.5,21.5],d:[9,15],k:{park:0,pesc:1,tarde:0,dom15:1,repart:1}},{n:'Marisol Norte',e:'🏬',a:'📍 Avenida Muestra 45, Ciudad',w:[8,22],d:[9,14],k:{park:1,pesc:0,tarde:1,dom15:0,repart:1}}];
+const N=[['park','🅿️ Aparcamiento propio'],['pesc','🐟 Pescadería con mostrador'],['tarde','🌙 Abierto hasta las 22 h'],['dom15','☀️ Domingo hasta las 15 h'],['repart','🛵 Reparto a domicilio']];
+const SV=[['park','Aparcamiento propio'],['pesc','Pescadería con mostrador'],['tarde','Abierto hasta las 22 h'],['dom15','Domingo hasta las 15 h'],['repart','Reparto a domicilio'],['pan','Panadería propia'],['rec','Recogida en tienda']];
+const base={pan:1,rec:1};
+const fmt=h=>{const m=Math.round((h%1)*60);return Math.floor(h)+(m?':'+String(m).padStart(2,'0'):'')+' h'};
+const want=new Set();
+$('ch').innerHTML=N.map(n=>'<label><input type="checkbox" data-k="'+n[0]+'"><span>'+n[1]+'</span></label>').join('');
+document.querySelectorAll('#ch input').forEach(i=>i.onchange=()=>{i.checked?want.add(i.dataset.k):want.delete(i.dataset.k);draw()});
+function score(s){let c=0;want.forEach(k=>{if(s.k[k])c++});return c}
+function card(i,best){const s=S[i],now=new Date(),td=(now.getDay()+6)%7,nh=now.getHours()+now.getMinutes()/60;
+const rows=D.map((d,j)=>{const r=j===6?s.d:s.w,l=(r[0]-8)/14*100,w=(r[1]-r[0])/14*100;
+return '<div class="day'+(j===td?' today':'')+'"><span>'+d+'</span><div class="bar"><i style="left:'+l+'%;width:'+w+'%"></i>'+(j===td&&nh>=8&&nh<=22?'<b style="left:'+((nh-8)/14*100)+'%" title="Ahora"></b>':'')+'</div><span>'+fmt(r[0])+'–'+fmt(r[1])+'</span></div>'}).join('');
+const sv=SV.map(x=>{const v=x[0] in s.k?s.k[x[0]]:base[x[0]];return '<li class="'+(want.has(x[0])?'m':'')+'"><span>'+x[1]+'</span><span class="'+(v?'y':'no')+'">'+(v?'✓':'—')+'</span></li>'}).join('');
+return '<span class="badge">★ Te recomendamos esta</span><h2>'+s.e+' '+s.n+'</h2><div class="ad">'+s.a+'</div><span class="ob" data-o="'+s.w+'" data-d="'+s.d+'">…</span><h3>Horario de la semana</h3>'+rows+'<div class="axis"><span></span><div><span>8 h</span><span>12 h</span><span>15 h</span><span>22 h</span></div><span></span></div><h3>Servicios</h3><ul class="svc">'+sv+'</ul>'}
+function draw(){const sc=[score(S[0]),score(S[1])],tot=want.size;let b=-1;if(tot&&sc[0]!==sc[1])b=sc[0]>sc[1]?0:1;
+[0,1].forEach(i=>{const c=$('c'+i);c.innerHTML=card(i);c.classList.toggle('best',b===i)});
+document.querySelectorAll('.ob').forEach(e=>{const o=e.dataset.o.split(',').map(Number),dd=e.dataset.d.split(',').map(Number),n=new Date(),r=n.getDay()===0?dd:o,h=n.getHours()+n.getMinutes()/60,ok=h>=r[0]&&h<r[1];e.textContent=ok?'Abierto ahora':'Cerrado ahora';e.classList.toggle('c',!ok)});
+const rc=$('rc');rc.classList.toggle('ok',tot>0);
+if(!tot)rc.innerHTML='Marca lo que te importa y te recomendamos una tienda.';
+else if(b<0)rc.innerHTML='Las dos cumplen '+sc[0]+' de '+tot+'. Elige la que te quede más cerca.<small>Marisol Centro: '+sc[0]+'/'+tot+' · Marisol Norte: '+sc[1]+'/'+tot+'</small>';
+else rc.innerHTML='👉 Te conviene <b>'+S[b].n+'</b>: cumple '+sc[b]+' de '+tot+'.<small>Marisol Centro: '+sc[0]+'/'+tot+' · Marisol Norte: '+sc[1]+'/'+tot+'</small>'}
+draw();setInterval(draw,60000);
+</script>
+</body>
+</html>
