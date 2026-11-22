@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta BX · La web como conversación (concepto nuevo)</title>
+<style>*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#2b2830;line-height:1.5}
+html,body{height:100%}body{background:#f1ede4;overflow:hidden}
+.app{display:grid;grid-template-columns:380px 1fr;height:100vh}
+.side{background:#2b2830;color:#e9e4dc;padding:34px 32px;display:flex;flex-direction:column;gap:22px;overflow:auto}
+.side img{height:54px;width:auto;align-self:flex-start}.side h1{font-size:30px;line-height:1.1;letter-spacing:-.03em;color:#fff}.side h1 span{color:#ffb27a}
+.side p{color:#b7b0a8;font-size:15px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}.facts div{background:#ffffff12;border-radius:16px;padding:14px}.facts b{font-size:28px;color:#8cd139;display:block;letter-spacing:-.03em;line-height:1}.facts span{font-size:12px;color:#b7b0a8}
+.side .lg{margin-top:auto;font-size:12px;color:#8a8590;line-height:1.7}.side .lg a{color:#b7b0a8;text-decoration:none;margin-right:12px}
+.chat{display:flex;flex-direction:column;height:100vh;min-width:0}
+.bar{display:flex;align-items:center;gap:12px;padding:16px 26px;background:#fff;border-bottom:1px solid #e3ddcf}
+.av{width:42px;height:42px;border-radius:50%;background:#f47216;display:grid;place-items:center;font-size:20px;position:relative}.av::after{content:"";position:absolute;right:0;bottom:0;width:11px;height:11px;border-radius:50%;background:#3ab55a;border:2px solid #fff}
+.bar b{display:block;line-height:1.2}.bar small{color:#3a8a4a;font-weight:700}
+.msgs{flex:1;overflow-y:auto;padding:26px 6vw;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+.m{flex-shrink:0;max-width:min(560px,86%);padding:13px 18px;border-radius:20px;animation:in .3s ease both;font-size:16px;line-height:1.5}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.bot{background:#fff;border:1px solid #e3ddcf;border-bottom-left-radius:6px;align-self:flex-start}
+.me{background:#f47216;color:#fff;border-bottom-right-radius:6px;align-self:flex-end;font-weight:600}
+.typ{display:flex;gap:5px;padding:16px 18px}.typ i{width:8px;height:8px;border-radius:50%;background:#b7b0a8;animation:b 1s infinite}.typ i:nth-child(2){animation-delay:.15s}.typ i:nth-child(3){animation-delay:.3s}
+@keyframes b{50%{transform:translateY(-5px);background:#f47216}}
+.rich{max-width:min(620px,92%);padding:0;overflow:hidden;background:none;border:0}
+.sc{background:#fff;border:1px solid #e3ddcf;border-radius:18px;padding:18px 20px;margin-bottom:8px}.sc h3{font-size:20px;letter-spacing:-.02em;margin:6px 0}.sc p{color:#6b6670;font-size:14px;line-height:1.8}
+.sc a{display:inline-block;margin-top:8px;color:#e8650e;font-weight:800;text-decoration:none;font-size:14px}
+.nm{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.nm div{background:#fff;border:1px solid #e3ddcf;border-radius:14px;padding:12px;text-align:center}.nm b{font-size:24px;color:#e8650e;display:block;line-height:1}.nm span{font-size:11px;color:#6b6670}
+form.f{background:#fff;border:1px solid #e3ddcf;border-radius:18px;padding:16px;display:grid;gap:8px}form.f input,form.f select,form.f textarea{padding:12px 14px;border-radius:12px;border:2px solid #e3ddcf;font:inherit;outline:0;background:#fff}form.f input:focus,form.f select:focus,form.f textarea:focus{border-color:#f47216}
+form.f button{padding:13px;border:0;border-radius:99px;background:#2b2830;color:#fff;font:800 15px system-ui;cursor:pointer}
+.opts{padding:14px 6vw 18px;background:#f1ede4;border-top:1px solid #e3ddcf;display:flex;gap:8px;flex-wrap:wrap;min-height:70px;align-items:center}
+.opts small{width:100%;color:#6b6670;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.opts button{padding:11px 18px;border-radius:99px;border:2px solid #2b2830;background:#fff;font:800 14px system-ui;color:#2b2830;cursor:pointer;animation:in .3s ease both}.opts button:hover{background:#2b2830;color:#fff}
+@media(max-width:900px){body{overflow:auto}.app{grid-template-columns:1fr;height:auto}.side{padding:22px}.chat{height:90vh}.facts{grid-template-columns:repeat(4,1fr)}.side .lg{margin-top:0}}
+.ob{display:inline-flex;align-items:center;gap:7px;background:#eef6e6;color:#2f7d1f;font-weight:800;font-size:12px;padding:4px 12px;border-radius:99px}.ob::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}.ob.c{color:#c0392b;background:#fbe9e7}</style>
+<link rel="icon" href="../img/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="../img/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="shortcut icon" href="../favicon.ico?v=2">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=2">
+</head>
+<body>
+
+<div class="app"><aside class="side"><img src="../img/logo-blanco.svg" alt="Supermercados Marisol"><h1>Dos supermercados, <span>una familia</span>.</h1><p>Más de cuarenta años cuidando de nuestro barrio. Pregúntanos lo que quieras: aquí te respondemos.</p>
+<div class="facts"><div><b>40+</b><span>años</span></div><div><b>2</b><span>tiendas</span></div><div><b>80</b><span>personas</span></div><div><b>25</b><span>productores</span></div></div>
+<div class="lg"><a href="#">Aviso legal</a><a href="#">Privacidad</a><a href="#">Cookies</a><br>© 2026 Sánchez Irala, S.L. · Supermercados Marisol · Propuesta BX · La web como conversación (contenido de ejemplo)</div></aside>
+<section class="chat"><div class="bar"><div class="av">🛒</div><div><b>Marisol</b><small>● En línea</small></div></div>
+<div class="msgs" id="ms" aria-live="polite"></div><div class="opts" id="op"></div></section></div>
+<script>
+const $=id=>document.getElementById(id),ms=$('ms'),op=$('op');
+const T=[{n:'Marisol Centro',a:'📍 Calle Ejemplo 12, Ciudad',h:'🕒 Lun–Sáb 8:30–21:30 · Dom 9–15 h',t:'📞 +00 000 000 000',o:'8.5-21.5',s:'9-15'},{n:'Marisol Norte',a:'📍 Avenida Muestra 45, Ciudad',h:'🕒 Lun–Sáb 8:00–22:00 · Dom 9–14 h',t:'📞 +00 000 000 001',o:'8-22',s:'9-14'}];
+function open(s){const n=new Date(),d=n.getDay(),h=n.getHours()+n.getMinutes()/60,r=(d===0?s.s:s.o).split('-').map(Number),o=h>=r[0]&&h<r[1];return '<span class="ob'+(o?'':' c')+'">'+(o?'Abierto ahora':'Cerrado ahora')+'</span>'}
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+function add(html,cls){const d=document.createElement('div');d.className='m '+cls;d.innerHTML=html;ms.appendChild(d);ms.scrollTop=ms.scrollHeight;return d}
+async function bot(html,rich){const t=add('<span class="typ" style="display:flex;gap:5px"><i></i><i></i><i></i></span>','bot typ');ms.scrollTop=ms.scrollHeight;await wait(550);t.remove();return add(html,'bot'+(rich?' rich':''))}
+function opts(list){op.innerHTML='<small>Elige una opción</small>';list.forEach(o=>{const b=document.createElement('button');b.textContent=o[0];b.onclick=()=>{op.innerHTML='<small>…</small>';add(o[0],'me');o[1]()};op.appendChild(b)})}
+const MENU=()=>opts([['🏪 Tiendas y horarios',tiendas],['👨‍👩‍👧 ¿Quiénes somos?',somos],['💼 Trabaja con nosotros',trabajo],['✉️ Contacto',contacto]]);
+async function inicio(){await bot('¡Hola! 👋 Soy el asistente de <b>Supermercados Marisol</b>.');await bot('¿Qué quieres saber?');MENU()}
+async function tiendas(){await bot('Tenemos dos tiendas en la ciudad:');await bot(T.map(s=>'<div class="sc">'+open(s)+'<h3>'+s.n+'</h3><p>'+s.a+'<br>'+s.h+'<br>'+s.t+'</p><a href="#">Cómo llegar →</a></div>').join(''),true);await bot('¿Algo más?');opts([['🏪 Ver otra vez',tiendas],['↩ Volver al menú',async()=>{await bot('Claro, dime.');MENU()}]])}
+async function somos(){await bot('Somos una empresa familiar. Llevamos más de cuarenta años con producto fresco, precios justos y trato cercano.');await bot('<div class="nm"><div><b>40+</b><span>años</span></div><div><b>2</b><span>tiendas</span></div><div><b>80</b><span>personas</span></div><div><b>25</b><span>productores locales</span></div></div>',true);opts([['🛒 Ver tiendas',tiendas],['💼 Trabajar con vosotros',trabajo],['↩ Volver al menú',async()=>{await bot('Dime qué más necesitas.');MENU()}]])}
+async function trabajo(){await bot('¡Genial! Siempre buscamos gente con ganas. Cuéntame un poco:');const d=await bot('<form class="f" id="fj"><input name="n" placeholder="Tu nombre" required><input name="e" type="email" placeholder="Tu email" required><select><option>Caja</option><option>Frutería</option><option>Carnicería</option><option>Pescadería</option><option>Reposición</option><option>Otro</option></select><button>Enviar mi candidatura</button></form>',true);
+op.innerHTML='<small>Rellena el formulario</small>';$('fj').onsubmit=async e=>{e.preventDefault();const n=e.target.n.value;d.remove();add('Candidatura enviada ✅','me');await bot('¡Gracias, <b>'+n.replace(/</g,'&lt;')+'</b>! Te respondemos en 48 horas.');opts([['↩ Volver al menú',async()=>{await bot('Dime qué más necesitas.');MENU()}]])}}
+async function contacto(){await bot('Puedes escribirnos o llamarnos:');await bot('<div class="sc"><h3>Atención al cliente</h3><p>✉️ info@supermercadosmarisol.example<br>📞 +00 000 000 000<br>🕒 Lunes a sábado, 9:00 – 20:00</p></div>',true);opts([['✍️ Enviar un mensaje',mensaje],['↩ Volver al menú',async()=>{await bot('Dime qué más necesitas.');MENU()}]])}
+async function mensaje(){await bot('Escríbeme tu mensaje:');const d=await bot('<form class="f" id="fm"><input placeholder="Tu email" type="email" required><textarea rows="3" placeholder="Tu mensaje" required></textarea><button>Enviar</button></form>',true);op.innerHTML='<small>Escribe tu mensaje</small>';$('fm').onsubmit=async e=>{e.preventDefault();d.remove();add('Mensaje enviado ✅','me');await bot('¡Recibido! Te contestamos en 48 horas.');opts([['↩ Volver al menú',async()=>{await bot('Dime qué más necesitas.');MENU()}]])}}
+inicio().then(()=>{const g=new URLSearchParams(location.search).get('go'),M={tiendas,somos,trabajo,contacto};if(g&&M[g]){op.innerHTML='<small>…</small>';add({tiendas:'🏪 Tiendas y horarios',somos:'👨‍👩‍👧 ¿Quiénes somos?',trabajo:'💼 Trabaja con nosotros',contacto:'✉️ Contacto'}[g],'me');M[g]()}});
+</script>
+</body>
+</html>

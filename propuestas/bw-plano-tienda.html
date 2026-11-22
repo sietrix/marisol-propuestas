@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta BW · Plano de la tienda (concepto nuevo)</title>
+<style>*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#2b2830;line-height:1.5}
+body{background:#f4f1ea}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;background:#fff;border-bottom:1px solid #e3ddcf}header img{height:42px;display:block}
+header a{color:#2b2830;text-decoration:none;font-weight:700;font-size:14px;margin-left:20px}
+.top{max-width:1240px;margin:auto;padding:5vh 5vw 2vh}
+.top small{color:#e8650e;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:12px}
+.top h1{font-size:clamp(34px,5.4vw,66px);letter-spacing:-.04em;line-height:1.02;margin:10px 0 10px}.top h1 span{color:#e8650e}.top p{color:#6b6670;font-size:19px;max-width:620px}
+.tabs{display:flex;gap:8px;margin-top:22px;flex-wrap:wrap}.tabs button{padding:12px 22px;border-radius:99px;border:2px solid #d9d2c2;background:#fff;font:800 15px system-ui;color:#2b2830;cursor:pointer;display:flex;gap:10px;align-items:center}.tabs button.on{background:#2b2830;color:#fff;border-color:#2b2830}
+.layout{max-width:1240px;margin:0 auto;padding:0 5vw 6vh;display:grid;grid-template-columns:1.7fr 1fr;gap:22px;align-items:start}
+.find{background:#fff;border-radius:22px;padding:20px 22px;margin-bottom:14px;border:1px solid #e3ddcf}
+.find label{font-weight:800;font-size:14px;display:block;margin-bottom:8px}
+.find input{width:100%;padding:15px 18px;border-radius:14px;border:2px solid #d9d2c2;font:inherit;outline:0}.find input:focus{border-color:#e8650e}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.chips button{padding:8px 14px;border-radius:99px;border:1px solid #d9d2c2;background:#faf7f0;font:700 13px system-ui;cursor:pointer;color:#2b2830}.chips button:hover{border-color:#e8650e;color:#e8650e}
+.planbox{background:#fff;border-radius:26px;border:1px solid #e3ddcf;padding:14px;box-shadow:0 14px 40px #2b28300f}
+svg.plan{width:100%;height:auto;display:block}
+.sec{cursor:pointer;transition:opacity .25s}.sec rect{transition:.25s}.sec:hover rect{filter:brightness(.96)}
+.sec text{pointer-events:none;font-family:system-ui;font-weight:800}
+.dim{opacity:.35}.hl rect{stroke:#e8650e;stroke-width:5;animation:pu 1.2s ease-in-out infinite}
+@keyframes pu{50%{stroke-width:9}}
+.route{fill:none;stroke:#e8650e;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:4 14;animation:flow 1s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-18}}
+.side{position:sticky;top:20px;display:grid;gap:14px}
+.card{background:#fff;border:1px solid #e3ddcf;border-radius:22px;padding:24px}
+.card h2{font-size:28px;letter-spacing:-.03em;line-height:1.1}.card .em{font-size:44px}
+.card ul{list-style:none;padding:0;margin:12px 0 0;display:flex;gap:6px;flex-wrap:wrap}.card li{background:#faf7f0;border-radius:99px;padding:5px 12px;font-size:13px;font-weight:600}
+.card p{color:#6b6670;margin-top:8px;font-size:15px}
+.info p{line-height:1.9}
+.btn{display:inline-block;background:#e8650e;color:#fff;text-decoration:none;font-weight:800;padding:12px 22px;border-radius:99px;font-size:14px;margin-top:12px}
+.close{background:#2b2830;color:#fff;padding:6vh 5vw}.close .w{max-width:1240px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.close h2{font-size:clamp(26px,3.6vw,44px);letter-spacing:-.03em}.close .btn{background:#fff;color:#2b2830}
+footer{background:#222026;color:#b7b0a8;padding:22px 5vw;font-size:13px;display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;align-items:center}footer img{height:36px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.side{position:static}}
+.ob{display:inline-flex;align-items:center;gap:7px;background:#eef6e6;color:#2f7d1f;font-weight:800;font-size:12px;padding:4px 12px;border-radius:99px}.ob::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}.ob.c{color:#c0392b;background:#fbe9e7}</style>
+<link rel="icon" href="../img/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="../img/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="shortcut icon" href="../favicon.ico?v=2">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=2">
+</head>
+<body>
+
+<header><img src="../img/logo-color.svg" alt="Supermercados Marisol"><nav><a href="#plano">Plano</a><a href="#tienda">Tienda</a><a href="#contacto">Contacto</a></nav></header>
+<div class="top"><small>Por dentro de tu súper</small><h1>¿Dónde está <span>el aceite</span>?</h1><p>Elige tu tienda, escribe lo que buscas y te marcamos el camino desde la entrada.</p>
+<div class="tabs" id="tabs"><button class="on" data-t="0">🏪 Marisol Centro</button><button data-t="1">🏬 Marisol Norte</button></div></div>
+<div class="layout" id="plano"><div>
+<div class="find"><label for="q">¿Qué estás buscando?</label><input id="q" placeholder="Prueba con aceite, pan, merluza, leche, detergente…" autocomplete="off"><div class="chips" id="ch"></div></div>
+<div class="planbox"><svg class="plan" id="svg" viewBox="0 0 900 600" role="img" aria-label="Plano interior de la tienda"></svg></div></div>
+<aside class="side"><div class="card" id="sd"></div><div class="card info" id="tienda"><span class="ob" id="ob">…</span><h2 id="tn" style="margin-top:10px"></h2><p id="ti"></p><a class="btn" href="#">Cómo llegar</a></div></aside></div>
+<div class="close" id="contacto"><div class="w"><div><h2>¿No lo encuentras? Pregunta en tienda.</h2><p style="color:#cfc9c2;margin-top:6px">info@supermercadosmarisol.example · +00 000 000 000</p></div><a class="btn" href="#">Trabaja con nosotros</a></div></div>
+<footer><img src="../img/logo-blanco.svg" alt="Supermercados Marisol"><span>© 2026 Sánchez Irala, S.L. · Supermercados Marisol · Propuesta BW · Plano de la tienda (contenido de ejemplo)</span></footer>
+<script>
+const SC=[['fru','Frutería y verdura','🥬','#d4ebb0',40,40,200,190],['car','Carnicería','🥩','#f4c0b8',250,40,200,190],['pes','Pescadería','🐟','#c4dff3',460,40,200,190],['pan','Panadería','🥖','#f8dfa8',670,40,190,190],['lac','Lácteos y quesos','🧀','#f8eaa8',40,330,170,130],['des','Despensa','🍯','#f2d0a2',220,330,170,130],['beb','Bebidas y vinos','🍷','#dccdf0',510,330,170,130],['lim','Limpieza e higiene','🧼','#cbe8e5',690,330,170,130],['aten','Atención al cliente','💁','#e7e3da',40,490,350,70],['caj','Cajas','🧾','#dcdce8',510,490,350,70]];
+const IT={aceite:'des',aceitunas:'des',miel:'des',legumbres:'des',arroz:'des',pasta:'des',conservas:'des',azucar:'des',cafe:'des',galletas:'des',manzana:'fru',naranja:'fru',tomate:'fru',lechuga:'fru',patatas:'fru',zanahoria:'fru',platano:'fru',ternera:'car',pollo:'car',chorizo:'car',hamburguesa:'car',cerdo:'car',merluza:'pes',gambas:'pes',sardinas:'pes',mejillones:'pes',salmon:'pes',pan:'pan',croissant:'pan',empanada:'pan',bollos:'pan',leche:'lac',queso:'lac',yogur:'lac',mantequilla:'lac',huevos:'lac',vino:'beb',cerveza:'beb',agua:'beb',zumo:'beb',refresco:'beb',detergente:'lim',lejia:'lim',papel:'lim',jabon:'lim',champu:'lim',bolsas:'caj',tarjeta:'aten',devoluciones:'aten',pedidos:'aten'};
+const STO=[{n:'Marisol Centro',i:'📍 Calle Ejemplo 12, Ciudad<br>🕒 Lun–Sáb 8:30–21:30 · Dom 9–15 h<br>📞 +00 000 000 000',o:'8.5-21.5',s:'9-15',m:false},{n:'Marisol Norte',i:'📍 Avenida Muestra 45, Ciudad<br>🕒 Lun–Sáb 8:00–22:00 · Dom 9–14 h<br>📞 +00 000 000 001',o:'8-22',s:'9-14',m:true}];
+let st=0,sel=null;const $=id=>document.getElementById(id);
+const norm=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const X=(x,w)=>STO[st].m?900-x-w:x;
+function route(s){const cx=X(s[4],s[6])+s[6]/2,ex=450;
+if(s[5]>480){const edge=cx<450?X(s[4],s[6])+s[6]:X(s[4],s[6]);return [[ex,585],[ex,525],[edge,525]]}
+const top=s[5]<300;return [[ex,585],[ex,280],[cx,280],[cx,top?s[5]+s[7]:s[5]]]}
+function draw(){let h='<rect x="0" y="0" width="900" height="600" rx="18" fill="#faf7f0"/><rect x="390" y="230" width="120" height="370" fill="#fff"/><rect x="0" y="230" width="900" height="100" fill="#fff"/>';
+SC.forEach(s=>{const x=X(s[4],s[6]),on=sel===s[0],dim=sel&&!on;
+h+='<g class="sec'+(on?' hl':'')+(dim?' dim':'')+'" data-id="'+s[0]+'" tabindex="0"><rect x="'+x+'" y="'+s[5]+'" width="'+s[6]+'" height="'+s[7]+'" rx="16" fill="'+s[3]+'"/>'+
+(s[7]>100?'<text x="'+(x+s[6]/2)+'" y="'+(s[5]+s[7]/2-2)+'" text-anchor="middle" font-size="42">'+s[2]+'</text><text x="'+(x+s[6]/2)+'" y="'+(s[5]+s[7]/2+30)+'" text-anchor="middle" font-size="15" fill="#2b2830">'+s[1]+'</text>':'<text x="'+(x+s[6]/2-70)+'" y="'+(s[5]+s[7]/2+10)+'" text-anchor="middle" font-size="28">'+s[2]+'</text><text x="'+(x+s[6]/2-40)+'" y="'+(s[5]+s[7]/2+6)+'" text-anchor="start" font-size="16" fill="#2b2830">'+s[1]+'</text>')+'</g>'});
+if(sel){const s=SC.find(z=>z[0]===sel);h+='<polyline class="route" points="'+route(s).map(p=>p.join(',')).join(' ')+'"/>'}
+h+='<g transform="translate(450 585)"><circle r="14" fill="#2b2830"/><circle r="5" fill="#fff"/></g><text x="450" y="560" text-anchor="middle" font-family="system-ui" font-weight="800" font-size="14" fill="#2b2830">ENTRADA · Estás aquí</text>';
+$('svg').innerHTML=h;
+$('svg').querySelectorAll('.sec').forEach(g=>{g.onclick=()=>pick(g.dataset.id);g.onkeydown=e=>{if(e.key==='Enter')pick(g.dataset.id)}});
+const s=sel&&SC.find(z=>z[0]===sel);
+$('sd').innerHTML=s?'<div class="em">'+s[2]+'</div><h2>'+s[1]+'</h2><p>Sigue la línea naranja desde la entrada.</p><ul>'+Object.keys(IT).filter(k=>IT[k]===sel).map(k=>'<li>'+k+'</li>').join('')+'</ul>':'<div class="em">🧭</div><h2>Elige una sección</h2><p>Pulsa en el plano o busca un producto. Te marcaremos el camino desde la entrada.</p>';
+$('tn').textContent=STO[st].n;$('ti').innerHTML=STO[st].i;
+{const n=new Date(),d=n.getDay(),h=n.getHours()+n.getMinutes()/60,r=(d===0?STO[st].s:STO[st].o).split('-').map(Number),o=h>=r[0]&&h<r[1],e=$('ob');e.textContent=o?'Abierto ahora':'Cerrado ahora';e.classList.toggle('c',!o)}
+}
+function pick(id){sel=id;draw()}
+function find(q){q=norm(q.trim());if(!q)return[];return Object.keys(IT).filter(k=>k.startsWith(q)||k.includes(q)).slice(0,6)}
+$('q').oninput=()=>{const r=find($('q').value);$('ch').innerHTML=r.map(k=>'<button data-k="'+k+'">'+k+'</button>').join('');if(r.length)pick(IT[r[0]]);else if($('q').value.trim()){sel=null;draw();$('ch').innerHTML='<span style="color:#6b6670;font-size:13px">No lo tenemos localizado. Pregunta en Atención al cliente.</span>'}else{sel=null;draw();sug()}
+$('ch').querySelectorAll('button').forEach(b=>b.onclick=()=>{$('q').value=b.dataset.k;pick(IT[b.dataset.k])})};
+function sug(){$('ch').innerHTML=['aceite','pan','merluza','leche','detergente','vino'].map(k=>'<button data-k="'+k+'">'+k+'</button>').join('');$('ch').querySelectorAll('button').forEach(b=>b.onclick=()=>{$('q').value=b.dataset.k;pick(IT[b.dataset.k])})}
+document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{st=+b.dataset.t;document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x===b));draw()});
+sug();draw();
+const qq=new URLSearchParams(location.search).get('q');if(qq){$('q').value=qq;$('q').oninput()}
+const tt=new URLSearchParams(location.search).get('t');if(tt==='1')document.querySelectorAll('#tabs button')[1].click();
+</script>
+</body>
+</html>
